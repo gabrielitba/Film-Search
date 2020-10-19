@@ -1,11 +1,5 @@
-# Filme Search
+# Films Search
 
-&nbsp;
-
-
-## 🎥
-
-![](https://i.imgur.com/FTNRVqn.gif)
 
 &nbsp;
 
@@ -20,11 +14,6 @@
 
 &nbsp;
 
-## ⚙️ Funcionalidades
-
-Design responsivo para diversos dispositivos.
-
-&nbsp;
 
 ## 🔥️ Executando o projeto
 
