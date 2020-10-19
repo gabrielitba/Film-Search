@@ -5,7 +5,7 @@
 
 ## 🎥
 
-![alt text](https://i.imgur.com/FTNRVqn.gif)
+![](https://i.imgur.com/FTNRVqn.gif)
 
 &nbsp;
 
