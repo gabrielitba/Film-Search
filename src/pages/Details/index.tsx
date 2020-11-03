@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import Header from '../../components/Header';
 import HeaderButton from '../../components/HeaderButton';
@@ -36,15 +36,15 @@ const Details: React.FC = ({}) => {
 
   useEffect(() => {
     checkFavorited();
-  }, [checkFavorited]);
+  });
 
-  function checkFavorited() {
+  const checkFavorited = useCallback(() => {
     listFavorites.map(favorite => {
       if (favorite.id === filme.id) {
         setButtonFavorite(false);
       }
     });
-  }
+  }, [listFavorites, filme.id]);
 
   useEffect(() => {
     setListFavorites(JSON.parse(localStorage.getItem('favorites') || '[]'));
