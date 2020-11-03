@@ -13,7 +13,7 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 
 ## 🎥 Prévia do Projeto
 
-![alt text](https://i.imgur.com/FTNRVqn.gif)
+![alt text](https://i.imgur.com/7Qm6uiK.gif)
 
 &nbsp;
 
@@ -37,9 +37,7 @@ Pesquisar filmes por titulo;
 
 Exibir detalhes do filme clicado;
 
-Favoritar/Desfavoritar filme (os dados são armazenados no localstorage);
-
-Paginação.
+Favoritar/Desfavoritar filme (os dados são armazenados no localstorage).
 
 &nbsp;
 
