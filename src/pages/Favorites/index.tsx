@@ -22,7 +22,6 @@ const Favorites: React.FC = () => {
     setListFavorites(JSON.parse(localStorage.getItem('favorites') || '[]'));
   }, []);
 
-  console.log(listFavorites);
 
   return (
     <Container>
