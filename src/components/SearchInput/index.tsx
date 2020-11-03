@@ -113,8 +113,6 @@ const SearchInput: React.FC = () => {
       });
   }
 
-  console.log(currentPage, totalPages);
-
   return (
     <>
       {changeButton ? (
