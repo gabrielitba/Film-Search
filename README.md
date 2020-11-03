@@ -3,14 +3,43 @@
 
 &nbsp;
 
+## 🙋‍♂ Apresentação:
+
+Uma single-page application para pesquisa de filmes. Ela consome dados da API da The Movie Database, e exibe os resultado pesquisado, dando a opção de exibir detalhes e favoritar seus filmes.
+
+API Reference: https://developers.themoviedb.org/3/getting-started/introduction
+
+&nbsp;
+
+## 🎥 Prévia do Projeto
+
+![alt text](https://i.imgur.com/FTNRVqn.gif)
+
+&nbsp;
+
+
 ## 💻 Tecnologias utilizadas
 
-- **react**
 - **TypeScript**
-- **styled-components**
-- **react-router-dom**
-- **react-toastify**
-- **axios**
+- **react** — Biblioteca JavaScript usada para criar interfaces
+- **react-router-dom**    — Utilizado para criar a SPA
+- **react-toastify**    — Utilizado para exibir notificações
+- **styled-components**    — Usar CSS utilizando JavaScript
+- **axios** — Biblioteca JavaScript para fazer requests a API
+
+&nbsp;
+
+## ⚙️ Funcionalidades
+
+Exibe os ultimos lançamentos na pagina principal;
+
+Pesquisar filmes por titulo;
+
+Exibir detalhes do filme clicado;
+
+Favoritar/Desfavoritar filme (os dados são armazenados no localstorage);
+
+Paginação.
 
 &nbsp;
 
