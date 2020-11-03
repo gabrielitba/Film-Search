@@ -20,7 +20,7 @@
 Para iniciar, usando o terminal, clone esse repositório em uma pasta com o comando:
 
 ```bash
-git clone https://github.com/gabrielitba/0000.git
+git clone https://github.com/gabrielitba/Film-Search.git
 ```
 
 Instalando as dependências:
