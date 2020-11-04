@@ -13,7 +13,7 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 
 ## 🎥 Prévia do Projeto
 
-![alt text](https://i.imgur.com/2iUuPSN.gif)
+![alt text](https://i.imgur.com/6SHk9Hs.gif)
 
 &nbsp;
 
