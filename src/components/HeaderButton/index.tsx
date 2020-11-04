@@ -9,7 +9,7 @@ const ContainerButton = styled.span`
   border: none;
 
   border-radius: 8px;
-  margin-right: 3.8rem;
+  margin: 0 3.8rem 0 2rem;
 
   a {
     display: flex;

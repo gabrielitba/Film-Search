@@ -9,10 +9,14 @@ export const GlobalStyles = createGlobalStyle`
 	border: none;
 	outline: none;
 	list-style: none;
+  /* overflow: visible; */
 }
 
 body{
   background: #F4F4F4;
+  &::-webkit-scrollbar {
+  display: none;
+ }
 }
 
 body,

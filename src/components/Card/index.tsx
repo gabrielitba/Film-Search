@@ -9,7 +9,7 @@ import Logo from '../../images/default-movie.png';
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 3rem 1.3rem 4rem 0;
+  margin: 3rem 0.68rem;
 
   background-color: #fff;
   height: 17.5rem;
@@ -17,7 +17,6 @@ const CardContainer = styled.div`
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
   img {
     height: 15rem;
-    width: 100%;
     opacity: 0.9;
     &:hover {
       opacity: 1;

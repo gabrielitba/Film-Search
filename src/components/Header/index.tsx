@@ -3,7 +3,6 @@ import React from 'react';
 import { HeaderContainer, LogoContainer, Logo } from './styles';
 
 import imageLogo from '../../images/imageLogo.svg';
-import SearchInput from '../SearchInput';
 
 const Header: React.FC = () => {
   return (
@@ -14,7 +13,6 @@ const Header: React.FC = () => {
         </Logo>
         <small>O lugar ideal para encontrar seus filmes</small>
       </LogoContainer>
-      <SearchInput />
     </HeaderContainer>
   );
 };

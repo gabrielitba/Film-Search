@@ -4,11 +4,11 @@ export const SearchContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: relative;
+
   button {
     position: absolute;
-    right: 10px;
+    right: 1rem;
 
     background-color: #fff;
     border: none;
@@ -41,31 +41,5 @@ export const Search = styled.input`
     font-size: 1rem;
     padding-left: 5px;
     color: #9aa0a6;
-  }
-`;
-
-export const CardContainer = styled.div`
-  position: absolute;
-  top: 11rem;
-  padding-left: 1.1rem;
-
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-export const ButtonContainer = styled.div`
-  position: absolute;
-  bottom: 6px;
-  left: 40%;
-  display: flex;
-  button {
-    cursor: pointer;
-    background-color: #fff;
-    border: 1.5px solid #dfe1e5;
-    height: 2rem;
-    width: 8rem;
-    border-radius: 3px;
-    font-size: 1rem;
-    color: #72787c;
   }
 `;

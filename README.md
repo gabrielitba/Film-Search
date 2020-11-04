@@ -13,14 +13,14 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 
 ## 🎥 Prévia do Projeto
 
-![alt text](https://i.imgur.com/7Qm6uiK.gif)
+![alt text](https://i.imgur.com/2iUuPSN.gif)
 
 &nbsp;
 
 
 ## 💻 Tecnologias utilizadas
 
-- **TypeScript**
+- **TypeScript** — Superset de JavaScript
 - **react** — Biblioteca JavaScript usada para criar interfaces
 - **react-router-dom**    — Utilizado para criar a SPA
 - **react-toastify**    — Utilizado para exibir notificações
@@ -37,7 +37,9 @@ Pesquisar filmes por titulo;
 
 Exibir detalhes do filme clicado;
 
-Favoritar/Desfavoritar filme (os dados são armazenados no localstorage).
+Favoritar/Desfavoritar filme (os dados são armazenados no localstorage);
+
+Checagem para verificar se o filme pesquisado existe.
 
 &nbsp;
 
