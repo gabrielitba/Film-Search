@@ -29,6 +29,7 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 
 &nbsp;
 
+
 ## ⚙️ Funcionalidades
 
 Exibe os ultimos lançamentos na pagina principal;
