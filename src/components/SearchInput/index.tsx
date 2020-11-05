@@ -46,11 +46,7 @@ const SearchInput: React.FC<Props> = ({ setStateHome }) => {
           return;
         }
 
-        if (window.location.href === 'http://localhost:3000/') {
-          setStateHome(data.results);
-        } else {
-          return;
-        }
+        setStateHome(data.results);
       });
   }
 
