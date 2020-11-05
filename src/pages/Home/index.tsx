@@ -25,7 +25,7 @@ interface SearchInterface {
   overview: string;
 }
 
-const Home: React.FC = () => {
+const Home = () => {
   const [stateHome, setStateHome] = useState<SearchInterface[]>([]);
 
   useEffect(() => {

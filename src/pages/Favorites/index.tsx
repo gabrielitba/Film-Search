@@ -15,13 +15,12 @@ interface FilmeInterface {
   overview: string;
 }
 
-const Favorites: React.FC = () => {
+const Favorites = () => {
   const [listFavorites, setListFavorites] = useState<Array<FilmeInterface>>([]);
 
   useEffect(() => {
     setListFavorites(JSON.parse(localStorage.getItem('favorites') || '[]'));
   }, []);
-
 
   return (
     <Container>

@@ -26,7 +26,7 @@ interface FilmeInterface {
   overview: string;
 }
 
-const Details: React.FC = ({}) => {
+const Details = ({}) => {
   const [listFavorites, setListFavorites] = useState<Array<FilmeInterface>>([]);
   const [buttonFavorite, setButtonFavorite] = useState<boolean>(true);
 
