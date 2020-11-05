@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import HeaderButton from '../../components/HeaderButton';
 import SearchInput from '../../components/SearchInput';
 import TitleSub from '../../components/TitleSub';
+
 import api from '../../services/api';
 
-import {
-  Container,
-  HeaderHome,
-  CardContainer,
-} from './styles';
+import { Container, HeaderHome, CardContainer } from './styles';
 
 interface SearchInterface {
   id: number;
@@ -30,15 +29,17 @@ const Home: React.FC = () => {
   const [stateHome, setStateHome] = useState<SearchInterface[]>([]);
 
   useEffect(() => {
-    function loadFilms() {
-      api
-        .get(
+    async function loadFilms() {
+      try {
+        const { data } = await api.get(
           'movie/upcoming?api_key=08b6c232498d4070430180e2c4a098b4&query&language=en-US&',
-        )
-        .then(response => {
-          const { data } = response;
-          setStateHome(data.results);
-        });
+        );
+        setStateHome(data.results);
+      } catch {
+        toast.error(
+          'Não conseguimos obter a lista de filmes mais recentes! Tente novamente mais tarde.',
+        );
+      }
     }
     loadFilms();
   }, []);
