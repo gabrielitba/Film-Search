@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const ContainerTitle = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,7 +23,7 @@ interface Props {
   subtitle?: string;
 }
 
-const TitleSub: React.FC<Props> = ({ title, subtitle }) => {
+const TitleSub = ({ title, subtitle }: Props) => {
   return (
     <ContainerTitle>
       <h1>{title}</h1>

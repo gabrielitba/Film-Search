@@ -4,7 +4,7 @@ import { HeaderContainer, LogoContainer, Logo } from './styles';
 
 import imageLogo from '../../images/imageLogo.svg';
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
     <HeaderContainer>
       <LogoContainer>

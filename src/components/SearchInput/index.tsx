@@ -25,7 +25,7 @@ interface Props {
   setStateHome: Dispatch<SetStateAction<SearchInterface[]>>;
 }
 
-const SearchInput: React.FC<Props> = ({ setStateHome }) => {
+const SearchInput = ({ setStateHome }: Props) => {
   const [changeButton, setChangeButton] = useState(false);
   const [searchValue, setSearchValue] = useState<string>('');
 

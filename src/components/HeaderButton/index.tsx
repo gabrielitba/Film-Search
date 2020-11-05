@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ContainerButton = styled.span`
-  background: #57ABF0;
+  background: #57abf0;
   border: none;
 
   border-radius: 8px;
@@ -32,7 +32,7 @@ interface Props {
   url: string;
 }
 
-const HeaderButton: React.FC<Props> = ({ title, url }) => {
+const HeaderButton = ({ title, url }: Props) => {
   return (
     <ContainerButton>
       <Link to={url}> {title} </Link>

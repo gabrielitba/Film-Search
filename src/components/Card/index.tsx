@@ -46,14 +46,14 @@ interface Props {
   overview: string;
 }
 
-const Card: React.FC<Props> = ({
+const Card = ({
   id,
   poster_path,
   original_title,
   release_date,
   vote_average,
   overview,
-}) => {
+}: Props) => {
   function myFilme(id: number): void {
     localStorage.setItem(
       'details',
