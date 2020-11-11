@@ -24,7 +24,7 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 - **react** — Biblioteca JavaScript usada para criar interfaces
 - **react-router-dom**    — Utilizado para criar a SPA
 - **react-toastify**    — Utilizado para exibir notificações
-- **styled-components**    — Usar CSS utilizando JavaScript
+- **styled-components**    — Aplicação de CSS utilizando JavaScript
 - **axios** — Biblioteca JavaScript para fazer requests a API
 
 &nbsp;
