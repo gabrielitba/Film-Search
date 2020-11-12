@@ -22,10 +22,10 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 
 - **TypeScript** — Superset de JavaScript
 - **react** — Biblioteca JavaScript usada para criar interfaces
-- **react-router-dom**    — Utilizado para criar a SPA
 - **react-toastify**    — Utilizado para exibir notificações
 - **styled-components**    — Aplicação de CSS utilizando JavaScript
 - **axios** — Biblioteca JavaScript para fazer requests a API
+- **react-router-dom** — Biblioteca para gerenciar as rotas/navegação
 
 &nbsp;
 
