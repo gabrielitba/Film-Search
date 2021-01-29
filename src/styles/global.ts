@@ -13,10 +13,22 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 body{
+  overflow-x: hidden;
   background: #F4F4F4;
-  &::-webkit-scrollbar {
-  display: none;
- }
+&::-webkit-scrollbar {
+ width: 10px;
+ height: 10px;
+}
+&::-webkit-scrollbar-thumb {
+ background: #b8b1b1;
+ border-radius: 10px;
+}
+
+&::-webkit-scrollbar-track{
+ background: #ffffff;
+ border-radius: 10px;
+ box-shadow: inset 7px 10px 12px #f0f0f0;
+}
 }
 
 body,
