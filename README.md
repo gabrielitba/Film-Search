@@ -16,6 +16,11 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 
 ![alt text](https://i.imgur.com/6SHk9Hs.gif)
 
+
+[Ou acesse agora](https://cinfilositba.netlify.app/)
+
+
+
 &nbsp;
 
 
