@@ -1,6 +1,6 @@
 # Films Search
-## Desafio - Front-end Developer
 
+## Desafio - Front-end Developer
 
 &nbsp;
 
@@ -16,25 +16,24 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 
 ![alt text](https://i.imgur.com/6SHk9Hs.gif)
 
-
 [Ou acesse agora](https://cinfilositba.netlify.app/)
 
-
-
 &nbsp;
-
 
 ## 💻 Tecnologias utilizadas
 
-- **TypeScript** — Superset de JavaScript
-- **react** — Biblioteca JavaScript usada para criar interfaces
-- **react-toastify**    — Utilizado para exibir notificações
-- **styled-components**    — Aplicação de CSS utilizando JavaScript
-- **axios** — Biblioteca JavaScript para fazer requests a API
-- **react-router-dom** — Biblioteca para gerenciar as rotas/navegação
+- **React**
+- **TypeScript**
+- **eslint**
+- **prettier**
+- **husky**
+- **lint-staged**
+- **react-toastify**
+- **styled-components**
+- **axios**
+- **react-router-dom**
 
 &nbsp;
-
 
 ## ⚙️ Funcionalidades
 
@@ -49,7 +48,6 @@ Favoritar/Desfavoritar filme (os dados são armazenados no localstorage);
 Checagem para verificar se o filme pesquisado existe.
 
 &nbsp;
-
 
 ## 🔥️ Executando o projeto
 
