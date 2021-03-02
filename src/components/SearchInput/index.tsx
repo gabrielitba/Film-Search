@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import * as S from './styles';
@@ -25,7 +25,7 @@ const SearchInput = ({ setStateHome }: SearchInputProps) => {
   const [searchValue, setSearchValue] = useState<string>('');
 
   function handleButton() {
-    setChangeButton(prevState => !prevState);
+    setChangeButton((prevState) => !prevState);
   }
 
   function fetchMyAPI() {
@@ -33,7 +33,7 @@ const SearchInput = ({ setStateHome }: SearchInputProps) => {
       .get(
         `search/movie?api_key=08b6c232498d4070430180e2c4a098b4&query=${searchValue}`,
       )
-      .then(response => {
+      .then((response) => {
         const { data } = response;
 
         if (data.total_results === 0) {
@@ -51,8 +51,8 @@ const SearchInput = ({ setStateHome }: SearchInputProps) => {
         <S.SearchContainer>
           <S.Search
             placeholder="Pesquise seus filmes aqui"
-            onChange={e => setSearchValue(e.target.value)}
-            onKeyDown={event => {
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={(event) => {
               if (event.key === 'Enter') fetchMyAPI();
             }}
           />

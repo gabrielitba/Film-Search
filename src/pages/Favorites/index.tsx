@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
@@ -34,7 +34,7 @@ const Favorites = () => {
         subtitle="Um espaço para seus filmes favoritos"
       />
       <S.CardContainer>
-        {listFavorites.map(filme => (
+        {listFavorites.map((filme) => (
           <Card
             key={filme.id}
             id={filme.id}

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import Header from '../../components/Header';
 import Button from '../../components/Button';
@@ -26,7 +26,7 @@ const Details = () => {
   );
 
   const checkFavorited = useCallback(() => {
-    listFavorites.map(favorite => {
+    listFavorites.map((favorite) => {
       if (favorite.id === filme.id) {
         setButtonFavorite(false);
       }

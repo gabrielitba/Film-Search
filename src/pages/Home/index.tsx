@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import Card from '../../components/Card';
@@ -50,7 +50,7 @@ const Home = () => {
       <Title title="Seja bem vindo" />
 
       <S.CardContainer>
-        {stateHome.map(filme => (
+        {stateHome.map((filme) => (
           <Card
             key={filme.id}
             id={filme.id}
