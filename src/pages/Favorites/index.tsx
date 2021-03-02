@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
-import HeaderButton from '../../components/HeaderButton';
-import TitleSub from '../../components/TitleSub';
+import Button from '../../components/Button';
+import Title from '../../components/Title';
 
-import { Container, HeaderFavorite, CardContainer } from './styles';
+import * as S from './styles';
 
 interface FilmeInterface {
   id: number;
@@ -23,17 +23,17 @@ const Favorites = () => {
   }, []);
 
   return (
-    <Container>
-      <HeaderFavorite>
+    <S.Container>
+      <S.HeaderFavorite>
         <Header />
-        <HeaderButton url="/" title="Voltar" />
-      </HeaderFavorite>
+        <Button url="/" title="Voltar" />
+      </S.HeaderFavorite>
 
-      <TitleSub
+      <Title
         title="favoritos"
         subtitle="Um espaço para seus filmes favoritos"
       />
-      <CardContainer>
+      <S.CardContainer>
         {listFavorites.map(filme => (
           <Card
             key={filme.id}
@@ -48,8 +48,8 @@ const Favorites = () => {
             overview={filme.overview}
           />
         ))}
-      </CardContainer>
-    </Container>
+      </S.CardContainer>
+    </S.Container>
   );
 };
 

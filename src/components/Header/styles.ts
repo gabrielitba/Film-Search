@@ -36,7 +36,6 @@ export const Logo = styled.span`
   }
 `;
 
-
 export const Menu = styled.ul`
   display: flex;
   padding-right: 23rem;

@@ -3,30 +3,25 @@ import { toast } from 'react-toastify';
 
 import Card from '../../components/Card';
 import Header from '../../components/Header';
-import HeaderButton from '../../components/HeaderButton';
+import Button from '../../components/Button';
 import SearchInput from '../../components/SearchInput';
-import TitleSub from '../../components/TitleSub';
+import Title from '../../components/Title';
 
 import api from '../../services/api';
 
-import { Container, HeaderHome, CardContainer } from './styles';
+import * as S from './styles';
 
-interface SearchInterface {
+interface FilmeInterface {
   id: number;
-
   poster_path: string;
-
   original_title: string;
-
   release_date: string;
-
   vote_average: number;
-
   overview: string;
 }
 
 const Home = () => {
-  const [stateHome, setStateHome] = useState<SearchInterface[]>([]);
+  const [stateHome, setStateHome] = useState<FilmeInterface[]>([]);
 
   useEffect(() => {
     async function loadFilms() {
@@ -45,16 +40,16 @@ const Home = () => {
   }, []);
 
   return (
-    <Container>
-      <HeaderHome>
+    <S.Container>
+      <S.HeaderHome>
         <Header />
         <SearchInput setStateHome={setStateHome} />
-        <HeaderButton url="/favorites" title="Favoritos ♥" />
-      </HeaderHome>
+        <Button url="/favorites" title="Favoritos ♥" />
+      </S.HeaderHome>
 
-      <TitleSub title="Seja bem vindo" />
+      <Title title="Seja bem vindo" />
 
-      <CardContainer>
+      <S.CardContainer>
         {stateHome.map(filme => (
           <Card
             key={filme.id}
@@ -66,8 +61,8 @@ const Home = () => {
             overview={filme.overview}
           />
         ))}
-      </CardContainer>
-    </Container>
+      </S.CardContainer>
+    </S.Container>
   );
 };
 

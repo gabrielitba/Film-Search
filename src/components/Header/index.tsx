@@ -1,19 +1,19 @@
 import React from 'react';
 
-import { HeaderContainer, LogoContainer, Logo } from './styles';
+import * as S from './styles';
 
-import imageLogo from '../../images/imageLogo.svg';
+import imageLogo from '../../assets/images/imageLogo.svg';
 
 const Header = () => {
   return (
-    <HeaderContainer>
-      <LogoContainer>
-        <Logo>
+    <S.HeaderContainer>
+      <S.LogoContainer>
+        <S.Logo>
           Cinéfilos <img src={imageLogo} alt="logo" />
-        </Logo>
+        </S.Logo>
         <small>O lugar ideal para encontrar seus filmes</small>
-      </LogoContainer>
-    </HeaderContainer>
+      </S.LogoContainer>
+    </S.HeaderContainer>
   );
 };
 

@@ -15,7 +15,6 @@ export const HeaderHome = styled.div`
 `;
 
 export const CardContainer = styled.div`
-
   margin-left: 2.5rem;
 
   display: flex;

@@ -1,21 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import Header from '../../components/Header';
-import HeaderButton from '../../components/HeaderButton';
-import TitleSub from '../../components/TitleSub';
+import Button from '../../components/Button';
+import Title from '../../components/Title';
 
-import Logo from '../../images/default-movie.png';
+import Logo from '../../assets/images/default-movie.png';
 
-import {
-  Container,
-  HeaderDetails,
-  ContainerDetails,
-  ContainerTitle,
-  FavoriteButton,
-  ImgUrl,
-  ContainerInfos,
-  Plot,
-} from './styles';
+import * as S from './styles';
 
 interface FilmeInterface {
   id: number;
@@ -26,7 +17,7 @@ interface FilmeInterface {
   overview: string;
 }
 
-const Details = ({}) => {
+const Details = () => {
   const [listFavorites, setListFavorites] = useState<Array<FilmeInterface>>([]);
   const [buttonFavorite, setButtonFavorite] = useState<boolean>(true);
 
@@ -34,17 +25,18 @@ const Details = ({}) => {
     localStorage.getItem('details') || '{}',
   );
 
-  useEffect(() => {
-    checkFavorited();
-  });
-
   const checkFavorited = useCallback(() => {
     listFavorites.map(favorite => {
       if (favorite.id === filme.id) {
         setButtonFavorite(false);
       }
+      return favorite;
     });
   }, [listFavorites, filme.id]);
+
+  useEffect(() => {
+    checkFavorited();
+  });
 
   useEffect(() => {
     setListFavorites(JSON.parse(localStorage.getItem('favorites') || '[]'));
@@ -58,17 +50,17 @@ const Details = ({}) => {
     setButtonFavorite(false);
 
     setListFavorites(listFavorites.concat(filme));
+
     listFavorites.map((favorite, index) => {
       if (favorite.id === filme.id) {
         listFavorites.splice(index, 1);
         setListFavorites(listFavorites.concat(filme));
       }
+      return favorite;
     });
   }
 
   function UnfavoriteFilme() {
-    console.log(filme.id);
-
     listFavorites.map((favorite, index) => {
       if (favorite.id === filme.id) {
         listFavorites.splice(index, 1);
@@ -77,54 +69,55 @@ const Details = ({}) => {
         localStorage.setItem('favorites', JSON.stringify(listFavorites));
         setButtonFavorite(true);
       }
+      return favorite;
     });
   }
 
   return (
     <>
-      <HeaderDetails>
+      <S.HeaderDetails>
         <Header />
-        <HeaderButton url="/" title="Voltar" />
-      </HeaderDetails>
+        <Button url="/" title="Voltar" />
+      </S.HeaderDetails>
 
-      <Container>
-        <ContainerTitle>
-          <TitleSub title="Detalhes" />
-        </ContainerTitle>
+      <S.Container>
+        <S.ContainerTitle>
+          <Title title="Detalhes" />
+        </S.ContainerTitle>
 
         {buttonFavorite ? (
-          <FavoriteButton
+          <S.FavoriteButton
             onClick={() => {
               FavoriteFilme();
             }}
           >
             Favorite
-          </FavoriteButton>
+          </S.FavoriteButton>
         ) : (
-          <FavoriteButton
+          <S.FavoriteButton
             onClick={() => {
               UnfavoriteFilme();
             }}
           >
             Unfavorite
-          </FavoriteButton>
+          </S.FavoriteButton>
         )}
 
-        <ContainerDetails>
+        <S.ContainerDetails>
           {filme.poster_path === null ? (
-            <ImgUrl src={Logo} alt="imagem do filme" />
+            <S.ImgUrl src={Logo} alt="imagem do filme" />
           ) : (
-            <ImgUrl src={filme.poster_path} alt="imagem do filme" />
+            <S.ImgUrl src={filme.poster_path} alt="imagem do filme" />
           )}
 
-          <ContainerInfos>
+          <S.ContainerInfos>
             <p>{filme.original_title}</p>
             <p>{filme.release_date}</p>
             <p>{filme.vote_average}/10</p>
-            <Plot>"{filme.overview}"</Plot>
-          </ContainerInfos>
-        </ContainerDetails>
-      </Container>
+            <S.Plot>{filme.overview}</S.Plot>
+          </S.ContainerInfos>
+        </S.ContainerDetails>
+      </S.Container>
     </>
   );
 };

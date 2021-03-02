@@ -1,31 +1,26 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import { SearchContainer, Search } from './styles';
+import * as S from './styles';
 
-import arrowBack from '../../images/arrowBack.svg';
-import searchButton from '../../images/searchButton.svg';
+import arrowBack from '../../assets/images/arrowBack.svg';
+import searchButton from '../../assets/images/searchButton.svg';
 import api from '../../services/api';
 
 interface SearchInterface {
   id: number;
-
   poster_path: string;
-
   original_title: string;
-
   release_date: string;
-
   vote_average: number;
-
   overview: string;
 }
 
-interface Props {
+interface SearchInputProps {
   setStateHome: Dispatch<SetStateAction<SearchInterface[]>>;
 }
 
-const SearchInput = ({ setStateHome }: Props) => {
+const SearchInput = ({ setStateHome }: SearchInputProps) => {
   const [changeButton, setChangeButton] = useState(false);
   const [searchValue, setSearchValue] = useState<string>('');
 
@@ -53,8 +48,8 @@ const SearchInput = ({ setStateHome }: Props) => {
   return (
     <>
       {changeButton ? (
-        <SearchContainer>
-          <Search
+        <S.SearchContainer>
+          <S.Search
             placeholder="Pesquise seus filmes aqui"
             onChange={e => setSearchValue(e.target.value)}
             onKeyDown={event => {
@@ -62,16 +57,16 @@ const SearchInput = ({ setStateHome }: Props) => {
             }}
           />
 
-          <button onClick={handleButton}>
+          <button type="button" onClick={handleButton}>
             <img src={arrowBack} alt="" />
           </button>
-        </SearchContainer>
+        </S.SearchContainer>
       ) : (
-        <SearchContainer>
-          <button onClick={handleButton}>
+        <S.SearchContainer>
+          <button type="button" onClick={handleButton}>
             <img src={searchButton} alt="" />
           </button>
-        </SearchContainer>
+        </S.SearchContainer>
       )}
     </>
   );

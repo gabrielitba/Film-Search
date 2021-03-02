@@ -3,31 +3,33 @@
     "browser": true,
     "es6": true
   },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "airbnb",
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
+    "prettier"
   ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
-        "jsx": true
+      "jsx": true
     },
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "prettier",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
   "rules": {
     "prettier/prettier": "error",
     "import/extensions": [
@@ -42,10 +44,12 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
-  },
-  "settings": {
-    "import/resolver": {
-      "typescript": {}
-    }
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "camelcase": 0,
+    "react/jsx-one-expression-per-line": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off"
   }
 }

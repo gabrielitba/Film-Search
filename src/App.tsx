@@ -1,10 +1,10 @@
 import React from 'react';
-import Routes from './routes';
 import { ToastContainer } from 'react-toastify';
+import Routes from './routes';
 
 import { GlobalStyles } from './styles/global';
 
-function App() {
+const App = () => {
   return (
     <>
       <Routes />
@@ -12,6 +12,6 @@ function App() {
       <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
-}
+};
 
 export default App;
