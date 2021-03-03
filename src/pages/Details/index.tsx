@@ -1,7 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ImArrowLeft } from 'react-icons/im';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+
+import { FilmsContext } from '../../context/films';
 
 import Header from '../../components/Header';
 import Button from '../../components/Button';
@@ -21,6 +23,8 @@ interface FilmeInterface {
 }
 
 const Details = () => {
+  const { filmSelected } = useContext(FilmsContext);
+
   const history = useHistory();
 
   const goToPreviousPath = useCallback(() => {
@@ -41,10 +45,6 @@ const Details = () => {
       }
     });
   }, [listFavorites, filme.id]);
-
-  useEffect(() => {
-    setListFavorites(JSON.parse(localStorage.getItem('favorites') || '[]'));
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(listFavorites));
@@ -112,17 +112,17 @@ const Details = () => {
         )}
 
         <S.ContainerDetails>
-          {filme.poster_path === null ? (
+          {filmSelected.poster_path === null ? (
             <S.ImgUrl src={Logo} alt="imagem do filme" />
           ) : (
-            <S.ImgUrl src={filme.poster_path} alt="imagem do filme" />
+            <S.ImgUrl src={filmSelected.poster_path} alt="imagem do filme" />
           )}
 
           <S.ContainerInfos>
-            <p>{filme.original_title}</p>
-            <p>{filme.release_date}</p>
-            <p>{filme.vote_average}/10</p>
-            <S.Plot>{filme.overview}</S.Plot>
+            <p>{filmSelected.original_title}</p>
+            <p>{filmSelected.release_date}</p>
+            <p>{filmSelected.vote_average}/10</p>
+            <S.Plot>{filmSelected.overview}</S.Plot>
           </S.ContainerInfos>
         </S.ContainerDetails>
       </S.CardDetail>

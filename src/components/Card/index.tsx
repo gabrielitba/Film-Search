@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 import Logo from '../../assets/images/default-movie.png';
+import { useContext } from 'react';
+import { FilmsContext } from '../../context/films';
 
-interface CardProps {
+interface FilmData {
   id: number;
   poster_path: string;
   original_title: string;
@@ -12,27 +14,13 @@ interface CardProps {
   overview: string;
 }
 
-const Card = ({
-  id,
-  poster_path,
-  original_title,
-  release_date,
-  vote_average,
-  overview,
-}: CardProps) => {
-  function myFilme(idFilme: number): void {
-    localStorage.setItem(
-      'details',
-      JSON.stringify({
-        idFilme,
-        poster_path: `https://image.tmdb.org/t/p/w500${poster_path}`,
-        original_title,
-        release_date,
-        vote_average,
-        overview,
-      }),
-    );
-  }
+interface CardProps {
+  poster_path: string;
+  filmSelected?: FilmData;
+}
+
+const Card = ({ poster_path, filmSelected }: CardProps) => {
+  const { handleGetFilmSelected } = useContext(FilmsContext);
 
   return (
     <S.Container>
@@ -46,9 +34,7 @@ const Card = ({
       )}
       <button
         type="button"
-        onClick={() => {
-          myFilme(id);
-        }}
+        onClick={() => handleGetFilmSelected(filmSelected ?? ({} as FilmData))}
       >
         <Link to="/details">Exibir detalhes</Link>
       </button>

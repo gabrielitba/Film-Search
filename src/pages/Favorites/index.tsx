@@ -42,15 +42,10 @@ const Favorites = () => {
         {listFavorites.map((filme) => (
           <Card
             key={filme.id}
-            id={filme.id}
             poster_path={filme.poster_path.replace(
               'https://image.tmdb.org/t/p/w500/',
               '/',
             )}
-            original_title={filme.original_title}
-            release_date={filme.release_date}
-            vote_average={filme.vote_average}
-            overview={filme.overview}
           />
         ))}
       </S.CardContainer>

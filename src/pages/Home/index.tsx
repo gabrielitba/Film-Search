@@ -34,15 +34,11 @@ const Home = () => {
 
       <S.CardContainer>
         {filmsData.length > 0 ? (
-          filmsData.map((filme) => (
+          filmsData.map((film) => (
             <Card
-              key={filme.id}
-              id={filme.id}
-              poster_path={filme.poster_path}
-              original_title={filme.original_title}
-              release_date={filme.release_date}
-              vote_average={filme.vote_average}
-              overview={filme.overview}
+              key={film.id}
+              poster_path={film.poster_path}
+              filmSelected={film}
             />
           ))
         ) : (

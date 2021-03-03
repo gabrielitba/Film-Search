@@ -8,6 +8,8 @@ interface FilmsContextProvider {
   filmsData: FilmsData[];
   handleShowRecentMovies: () => Promise<void>;
   handleSearchFilms: (filmeName: string) => void;
+  filmSelected: FilmsData;
+  handleGetFilmSelected: (filmClicked: FilmsData) => void;
 }
 
 import { FilmsData } from './interface';
@@ -20,6 +22,7 @@ export const FilmsContext = createContext({} as FilmsContextProvider);
 
 const FilmsProvider = ({ children }: FilmsProviderProps) => {
   const [filmsData, setFilmsData] = useState<FilmsData[]>([]);
+  const [filmSelected, setFilmSelected] = useState<FilmsData>({} as FilmsData);
 
   const handleShowRecentMovies = async () => {
     try {
@@ -36,8 +39,6 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
 
   const handleSearchFilms = useCallback(
     (filmeName: string) => {
-      console.log(filmeName);
-
       api
         .get(
           `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${filmeName}`,
@@ -58,9 +59,20 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
     [filmsData],
   );
 
+  const handleGetFilmSelected = useCallback((filmClicked: FilmsData) => {
+    (filmClicked.poster_path = `https://image.tmdb.org/t/p/w500${filmClicked.poster_path}`),
+      setFilmSelected(filmClicked);
+  }, []);
+
   return (
     <FilmsContext.Provider
-      value={{ filmsData, handleShowRecentMovies, handleSearchFilms }}
+      value={{
+        filmsData,
+        handleShowRecentMovies,
+        handleSearchFilms,
+        filmSelected,
+        handleGetFilmSelected,
+      }}
     >
       {children}
     </FilmsContext.Provider>
