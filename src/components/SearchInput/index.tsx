@@ -13,7 +13,7 @@ const SearchInput = () => {
 
   const inputSearch = useRef<HTMLInputElement | null>(null);
 
-  const dispatchCallback = () => {
+  const dispatchHandleSearchFilms = () => {
     handleSearchFilms(inputSearch.current?.value ?? '');
   };
 
@@ -43,7 +43,7 @@ const SearchInput = () => {
             placeholder="Pesquise um filme"
             ref={inputSearch}
             onKeyDown={(event) => {
-              if (event.key === 'Enter') dispatchCallback();
+              if (event.key === 'Enter') dispatchHandleSearchFilms();
             }}
           />
 
