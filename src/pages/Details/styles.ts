@@ -1,6 +1,17 @@
 import styled from 'styled-components';
 
-export const ContainerDetail = styled.div`
+export const HeaderDetails = styled.div`
+  background: #fff;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+`;
+
+export const ContainerTitle = styled.div`
+  margin: 0 0 1.5rem -2.2rem;
+`;
+
+export const CardDetail = styled.div`
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
   width: 600px;
   height: 500px;
@@ -8,17 +19,6 @@ export const ContainerDetail = styled.div`
 
   margin: 0 auto;
   position: relative;
-`;
-
-export const ContainerTitle = styled.div`
-  margin: 0 0 1.5rem -2.2rem;
-`;
-
-export const HeaderDetails = styled.div`
-  background: #fff;
-  display: flex;
-  align-items: center;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
 `;
 
 export const FavoriteButton = styled.button`
