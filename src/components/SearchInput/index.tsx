@@ -53,7 +53,7 @@ const SearchInput = ({ setStateHome }: SearchInputProps) => {
   function fetchMyAPI() {
     api
       .get(
-        `search/movie?api_key=08b6c232498d4070430180e2c4a098b4&query=${inputSearch.current?.value}`,
+        `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${inputSearch.current?.value}`,
       )
       .then((response) => {
         const { data } = response;

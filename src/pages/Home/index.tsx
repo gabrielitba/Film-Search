@@ -24,11 +24,13 @@ interface FilmeInterface {
 const Home = () => {
   const [stateHome, setStateHome] = useState<FilmeInterface[]>([]);
 
+  console.log(process.env.REACT_APP_API_KEY);
+
   useEffect(() => {
     async function loadFilms() {
       try {
         const { data } = await api.get(
-          'movie/upcoming?api_key=08b6c232498d4070430180e2c4a098b4&query&language=en-US&',
+          `movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&query&language=en-US&`,
         );
         setStateHome(data.results);
       } catch {
