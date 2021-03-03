@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <S.HeaderContainer>
       <S.LogoContainer>
-        <Link to="/">
+        <Link style={{ textDecoration: 'none' }} to="/">
           <S.Logo>
             Film Stalker <img src={imageLogo} alt="logo" />
           </S.Logo>
