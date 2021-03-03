@@ -113,9 +113,10 @@ export const LoadingRoller = styled.div`
 `;
 
 export const LoadingRing = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 10%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
   transform: scale(2);
 
   .spinner {
