@@ -88,7 +88,7 @@ const Details = () => {
         </Button>
       </S.HeaderDetails>
 
-      <S.Container>
+      <S.ContainerDetail>
         <S.ContainerTitle>
           <Title title="Detalhes" />
         </S.ContainerTitle>
@@ -125,7 +125,7 @@ const Details = () => {
             <S.Plot>{filme.overview}</S.Plot>
           </S.ContainerInfos>
         </S.ContainerDetails>
-      </S.Container>
+      </S.ContainerDetail>
     </>
   );
 };

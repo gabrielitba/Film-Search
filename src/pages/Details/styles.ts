@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+export const ContainerDetail = styled.div`
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
   width: 600px;
   height: 500px;
   border-radius: 1rem;
@@ -10,14 +10,15 @@ export const Container = styled.div`
   position: relative;
 `;
 
+export const ContainerTitle = styled.div`
+  margin: 0 0 1.5rem -2.2rem;
+`;
+
 export const HeaderDetails = styled.div`
   background: #fff;
   display: flex;
   align-items: center;
-`;
-
-export const ContainerTitle = styled.div`
-  margin: 0 0 1.5rem -2.2rem;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
 `;
 
 export const FavoriteButton = styled.button`

@@ -14,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 
 body{
   overflow-x: hidden;
-  background: #F4F4F4;
+  background: #fff;
 &::-webkit-scrollbar {
  width: 10px;
  height: 10px;

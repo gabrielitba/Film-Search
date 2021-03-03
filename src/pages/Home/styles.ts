@@ -10,9 +10,8 @@ export const HeaderHome = styled.div`
   width: 100vw;
 
   display: flex;
-  background: #fff;
   align-items: center;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
 `;
 
 export const CardContainer = styled.div`
