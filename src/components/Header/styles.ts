@@ -23,6 +23,7 @@ export const LogoContainer = styled.div`
     font-weight: 300;
     color: #6e6d7a;
     margin-top: 3px;
+    cursor: default;
   }
 `;
 
