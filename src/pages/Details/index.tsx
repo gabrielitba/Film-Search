@@ -4,9 +4,9 @@ import Header from '../../components/Header';
 import Button from '../../components/Button';
 import Title from '../../components/Title';
 
-import Logo from '../../assets/images/default-movie.png';
-
 import * as S from './styles';
+
+import Logo from '../../assets/images/default-movie.png';
 
 interface FilmeInterface {
   id: number;
