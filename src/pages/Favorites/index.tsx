@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { ImArrowLeft } from 'react-icons/im';
+
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
@@ -26,7 +28,9 @@ const Favorites = () => {
     <S.Container>
       <S.HeaderFavorite>
         <Header />
-        <Button url="/" title="Voltar ↩️" />
+        <Button url="/">
+          Voltar <ImArrowLeft size="0.9rem" style={{ marginLeft: '5px' }} />
+        </Button>
       </S.HeaderFavorite>
 
       <Title

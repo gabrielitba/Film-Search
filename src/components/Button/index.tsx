@@ -1,18 +1,19 @@
+import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as S from './styles';
 
 interface ButtonProps {
-  title: string;
   url?: string;
   goToPreviousPath?: () => void;
+  children: ReactNode;
 }
 
-const Button = ({ title, url, goToPreviousPath }: ButtonProps) => {
+const Button = ({ url, goToPreviousPath, children }: ButtonProps) => {
   return (
     <S.ContainerButton>
       <Link onClick={goToPreviousPath} to={url ?? '#'}>
-        {title}
+        {children}
       </Link>
     </S.ContainerButton>
   );

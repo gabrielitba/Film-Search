@@ -16,6 +16,7 @@ export const LogoContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-left: 1rem;
+  color: #4c4b5b;
 
   small {
     text-transform: uppercase;
@@ -29,33 +30,11 @@ export const Logo = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: default;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #4c4b5b;
   img {
     height: 2rem;
     margin-left: 0.3rem;
-  }
-`;
-
-export const Menu = styled.ul`
-  display: flex;
-  padding-right: 23rem;
-
-  li {
-    padding-right: 5px;
-    margin-right: 1rem;
-
-    a {
-      color: #6e6d7a;
-      text-decoration: none;
-      padding: 0 5px;
-      font-size: 1.2rem;
-      &:hover {
-        color: #4c4b5b;
-      }
-    }
-    img {
-      height: 0.45rem;
-      margin-left: -0.2rem;
-    }
   }
 `;

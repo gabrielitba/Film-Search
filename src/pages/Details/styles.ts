@@ -30,13 +30,10 @@ export const FavoriteButton = styled.button`
   justify-content: center;
 
   background: transparent;
-  border: 2px solid #3c99dc;
   border-radius: 10px;
   cursor: pointer;
   height: 2rem;
-  width: 6rem;
-  background: #3c99dc;
-  color: #fff;
+  width: 2rem;
   font-size: 1rem;
   opacity: 0.9;
   &:hover {

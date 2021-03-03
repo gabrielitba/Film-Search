@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { ImArrowLeft } from 'react-icons/im';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 import Header from '../../components/Header';
 import Button from '../../components/Button';
@@ -81,7 +83,9 @@ const Details = () => {
     <>
       <S.HeaderDetails>
         <Header />
-        <Button goToPreviousPath={goToPreviousPath} title="Voltar ↩️" />
+        <Button goToPreviousPath={goToPreviousPath}>
+          Voltar <ImArrowLeft size="0.9rem" style={{ marginLeft: '5px' }} />
+        </Button>
       </S.HeaderDetails>
 
       <S.Container>
@@ -95,7 +99,7 @@ const Details = () => {
               FavoriteFilme();
             }}
           >
-            Favoritar
+            <AiOutlineStar color="#3c99dc" size="2rem" />
           </S.FavoriteButton>
         ) : (
           <S.FavoriteButton
@@ -103,7 +107,7 @@ const Details = () => {
               UnfavoriteFilme();
             }}
           >
-            Desfavoritar
+            <AiFillStar color="#3c99dc" size="2rem" />
           </S.FavoriteButton>
         )}
 

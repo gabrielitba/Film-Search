@@ -17,7 +17,7 @@ export const HeaderFavorite = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  padding-left: 3.2rem;
+  padding-left: 2.7rem;
 
   display: flex;
   flex-wrap: wrap;

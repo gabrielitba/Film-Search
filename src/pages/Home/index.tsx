@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { FaHeart } from 'react-icons/fa';
 
 import Card from '../../components/Card';
 import Header from '../../components/Header';
@@ -44,7 +45,9 @@ const Home = () => {
       <S.HeaderHome>
         <Header />
         <SearchInput setStateHome={setStateHome} />
-        <Button url="/favorites" title="Favoritos ❤️" />
+        <Button url="/favorites">
+          Favoritos <FaHeart size="0.9rem" style={{ marginLeft: '5px' }} />
+        </Button>
       </S.HeaderHome>
 
       <Title title="Seja bem vindo" />
