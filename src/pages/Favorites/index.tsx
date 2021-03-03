@@ -39,7 +39,6 @@ const Favorites = () => {
         subtitle="Um espaço para seus filmes favoritos"
       />
 
-      <Loading typeLoading="roller" />
       <S.CardContainer>
         {listFavorites.map((filme) => (
           <Card

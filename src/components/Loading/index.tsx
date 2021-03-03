@@ -1,7 +1,7 @@
 import * as S from './styles';
 
 interface LoadingProps {
-  typeLoading: 'roller';
+  typeLoading: 'roller' | 'spinner';
 }
 
 const Loading = ({ typeLoading }: LoadingProps) => {
@@ -20,6 +20,12 @@ const Loading = ({ typeLoading }: LoadingProps) => {
             <div />
           </div>
         </S.LoadingRoller>
+      )}
+
+      {typeLoading === 'spinner' && (
+        <S.LoadingRing>
+          <div className="spinner" />
+        </S.LoadingRing>
       )}
     </>
   );
