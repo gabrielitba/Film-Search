@@ -8,13 +8,12 @@ export const GlobalStyles = createGlobalStyle`
 	padding: 0;
 	border: none;
 	outline: none;
-	list-style: none;
-  /* overflow: visible; */
 }
 
 body{
   overflow-x: hidden;
   background: #fff;
+
 &::-webkit-scrollbar {
  width: 10px;
  height: 10px;
