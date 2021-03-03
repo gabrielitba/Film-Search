@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Button from '../../components/Button';
@@ -18,6 +19,12 @@ interface FilmeInterface {
 }
 
 const Details = () => {
+  const history = useHistory();
+
+  const goToPreviousPath = useCallback(() => {
+    history.goBack();
+  }, [history]);
+
   const [listFavorites, setListFavorites] = useState<Array<FilmeInterface>>([]);
   const [buttonFavorite, setButtonFavorite] = useState<boolean>(true);
 
@@ -30,13 +37,8 @@ const Details = () => {
       if (favorite.id === filme.id) {
         setButtonFavorite(false);
       }
-      return favorite;
     });
   }, [listFavorites, filme.id]);
-
-  useEffect(() => {
-    checkFavorited();
-  });
 
   useEffect(() => {
     setListFavorites(JSON.parse(localStorage.getItem('favorites') || '[]'));
@@ -46,7 +48,11 @@ const Details = () => {
     localStorage.setItem('favorites', JSON.stringify(listFavorites));
   }, [listFavorites]);
 
-  function FavoriteFilme() {
+  useEffect(() => {
+    checkFavorited();
+  }, [checkFavorited]);
+
+  const FavoriteFilme = useCallback(() => {
     setButtonFavorite(false);
 
     setListFavorites(listFavorites.concat(filme));
@@ -56,11 +62,10 @@ const Details = () => {
         listFavorites.splice(index, 1);
         setListFavorites(listFavorites.concat(filme));
       }
-      return favorite;
     });
-  }
+  }, [filme, listFavorites]);
 
-  function UnfavoriteFilme() {
+  const UnfavoriteFilme = useCallback(() => {
     listFavorites.map((favorite, index) => {
       if (favorite.id === filme.id) {
         listFavorites.splice(index, 1);
@@ -69,15 +74,14 @@ const Details = () => {
         localStorage.setItem('favorites', JSON.stringify(listFavorites));
         setButtonFavorite(true);
       }
-      return favorite;
     });
-  }
+  }, [filme.id, listFavorites]);
 
   return (
     <>
       <S.HeaderDetails>
         <Header />
-        <Button url="/" title="Voltar ↩️" />
+        <Button goToPreviousPath={goToPreviousPath} title="Voltar ↩️" />
       </S.HeaderDetails>
 
       <S.Container>
@@ -91,7 +95,7 @@ const Details = () => {
               FavoriteFilme();
             }}
           >
-            Favorite
+            Favoritar
           </S.FavoriteButton>
         ) : (
           <S.FavoriteButton
@@ -99,7 +103,7 @@ const Details = () => {
               UnfavoriteFilme();
             }}
           >
-            Unfavorite
+            Desfavoritar
           </S.FavoriteButton>
         )}
 

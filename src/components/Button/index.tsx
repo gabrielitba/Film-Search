@@ -4,13 +4,16 @@ import * as S from './styles';
 
 interface ButtonProps {
   title: string;
-  url: string;
+  url?: string;
+  goToPreviousPath?: () => void;
 }
 
-const Button = ({ title, url }: ButtonProps) => {
+const Button = ({ title, url, goToPreviousPath }: ButtonProps) => {
   return (
     <S.ContainerButton>
-      <Link to={url}> {title} </Link>
+      <Link onClick={goToPreviousPath} to={url ?? '#'}>
+        {title}
+      </Link>
     </S.ContainerButton>
   );
 };
