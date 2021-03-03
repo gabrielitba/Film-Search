@@ -1,4 +1,11 @@
-import { Dispatch, SetStateAction, useState, useCallback } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useState,
+  useCallback,
+  useRef,
+  useEffect,
+} from 'react';
 import { toast } from 'react-toastify';
 import { FaSearch } from 'react-icons/fa';
 import { TiArrowBack } from 'react-icons/ti';
@@ -22,16 +29,31 @@ interface SearchInputProps {
 
 const SearchInput = ({ setStateHome }: SearchInputProps) => {
   const [showInputSearch, setShowInputSearch] = useState(false);
-  const [searchValue, setSearchValue] = useState<string>('');
+
+  const inputSearch = useRef<HTMLInputElement | null>(null);
 
   const handleShowInput = useCallback(() => {
-    setShowInputSearch((prevState) => !prevState);
-  }, []);
+    if (showInputSearch === false) {
+      setShowInputSearch(true);
+      inputSearch.current?.focus();
+    } else {
+      setShowInputSearch(false);
+      inputSearch.current?.blur();
+    }
+  }, [showInputSearch]);
+
+  useEffect(() => {
+    if (showInputSearch === true) {
+      inputSearch.current?.focus();
+    } else {
+      inputSearch.current?.blur();
+    }
+  }, [showInputSearch]);
 
   function fetchMyAPI() {
     api
       .get(
-        `search/movie?api_key=08b6c232498d4070430180e2c4a098b4&query=${searchValue}`,
+        `search/movie?api_key=08b6c232498d4070430180e2c4a098b4&query=${inputSearch.current?.value}`,
       )
       .then((response) => {
         const { data } = response;
@@ -51,7 +73,7 @@ const SearchInput = ({ setStateHome }: SearchInputProps) => {
         <S.SearchContainer>
           <S.Search
             placeholder="Pesquise um filme"
-            onChange={(e) => setSearchValue(e.target.value)}
+            ref={inputSearch}
             onKeyDown={(event) => {
               if (event.key === 'Enter') fetchMyAPI();
             }}
