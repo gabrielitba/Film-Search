@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import Title from '../../components/Title';
 
 import * as S from './styles';
+import Loading from '../../components/Loading';
 
 interface FilmeInterface {
   id: number;
@@ -37,6 +38,8 @@ const Favorites = () => {
         title="favoritos"
         subtitle="Um espaço para seus filmes favoritos"
       />
+
+      <Loading typeLoading="roller" />
       <S.CardContainer>
         {listFavorites.map((filme) => (
           <Card
