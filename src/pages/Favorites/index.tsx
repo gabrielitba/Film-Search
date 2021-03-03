@@ -26,7 +26,7 @@ const Favorites = () => {
     <S.Container>
       <S.HeaderFavorite>
         <Header />
-        <Button url="/" title="Voltar" />
+        <Button url="/" title="Voltar ↩️" />
       </S.HeaderFavorite>
 
       <Title

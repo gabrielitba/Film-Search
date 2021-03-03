@@ -44,7 +44,7 @@ const Home = () => {
       <S.HeaderHome>
         <Header />
         <SearchInput setStateHome={setStateHome} />
-        <Button url="/favorites" title="Favoritos ♥" />
+        <Button url="/favorites" title="Favoritos ❤️" />
       </S.HeaderHome>
 
       <Title title="Seja bem vindo" />

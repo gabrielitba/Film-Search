@@ -77,7 +77,7 @@ const Details = () => {
     <>
       <S.HeaderDetails>
         <Header />
-        <Button url="/" title="Voltar" />
+        <Button url="/" title="Voltar ↩️" />
       </S.HeaderDetails>
 
       <S.Container>

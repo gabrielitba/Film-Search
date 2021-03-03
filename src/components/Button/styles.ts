@@ -13,7 +13,7 @@ export const ContainerButton = styled.span`
     align-items: center;
 
     height: 2.5rem;
-    width: 6rem;
+    width: 6.5rem;
     color: #fff;
     text-decoration: none;
   }
