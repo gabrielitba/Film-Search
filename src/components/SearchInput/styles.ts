@@ -14,10 +14,7 @@ export const SearchContainer = styled.div`
     border: none;
     cursor: pointer;
     outline: none;
-    height: 2.4rem;
-    img {
-      height: 1.7rem;
-    }
+    height: 2rem;
   }
 `;
 
@@ -34,12 +31,11 @@ export const Search = styled.input`
   border: 1px solid #dfe1e5;
 
   &:focus {
-    box-shadow: 0px 0px 4px rgba(87, 171, 240, 1);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
   }
 
-  ::-webkit-input-placeholder {
+  &::placeholder {
     font-size: 1rem;
-    padding-left: 5px;
     color: #9aa0a6;
   }
 `;

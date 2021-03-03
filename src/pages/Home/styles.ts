@@ -4,6 +4,7 @@ export const Container = styled.div`
   height: 100vh;
   width: 100vw;
 `;
+
 export const HeaderHome = styled.div`
   height: 10vh;
   width: 100vw;

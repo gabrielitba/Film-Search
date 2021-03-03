@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
+import { FaSearch } from 'react-icons/fa';
+import { TiArrowBack } from 'react-icons/ti';
 
 import * as S from './styles';
 
-import arrowBack from '../../assets/images/arrowBack.svg';
-import searchButton from '../../assets/images/searchButton.svg';
 import api from '../../services/api';
 
 interface SearchInterface {
@@ -21,12 +21,12 @@ interface SearchInputProps {
 }
 
 const SearchInput = ({ setStateHome }: SearchInputProps) => {
-  const [changeButton, setChangeButton] = useState(false);
+  const [showInputSearch, setShowInputSearch] = useState(false);
   const [searchValue, setSearchValue] = useState<string>('');
 
-  function handleButton() {
-    setChangeButton((prevState) => !prevState);
-  }
+  const handleShowInput = useCallback(() => {
+    setShowInputSearch((prevState) => !prevState);
+  }, []);
 
   function fetchMyAPI() {
     api
@@ -47,24 +47,24 @@ const SearchInput = ({ setStateHome }: SearchInputProps) => {
 
   return (
     <>
-      {changeButton ? (
+      {showInputSearch ? (
         <S.SearchContainer>
           <S.Search
-            placeholder="Pesquise seus filmes aqui"
+            placeholder="Pesquise um filme"
             onChange={(e) => setSearchValue(e.target.value)}
             onKeyDown={(event) => {
               if (event.key === 'Enter') fetchMyAPI();
             }}
           />
 
-          <button type="button" onClick={handleButton}>
-            <img src={arrowBack} alt="" />
+          <button type="button" onClick={handleShowInput}>
+            <TiArrowBack size="2rem" color="#9aa0a6" />
           </button>
         </S.SearchContainer>
       ) : (
         <S.SearchContainer>
-          <button type="button" onClick={handleButton}>
-            <img src={searchButton} alt="" />
+          <button type="button" onClick={handleShowInput}>
+            <FaSearch size="1.3rem" color="#9aa0a6" />
           </button>
         </S.SearchContainer>
       )}
