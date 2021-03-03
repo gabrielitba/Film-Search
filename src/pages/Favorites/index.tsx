@@ -7,7 +7,6 @@ import Button from '../../components/Button';
 import Title from '../../components/Title';
 
 import * as S from './styles';
-import Loading from '../../components/Loading';
 
 interface FilmeInterface {
   id: number;
