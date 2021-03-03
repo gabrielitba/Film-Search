@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import { useContext, useEffect } from 'react';
 import { FaHeart } from 'react-icons/fa';
+
+import { FilmsContext } from '../../context/films';
 
 import Card from '../../components/Card';
 import Header from '../../components/Header';
@@ -8,44 +9,22 @@ import Button from '../../components/Button';
 import SearchInput from '../../components/SearchInput';
 import Title from '../../components/Title';
 
-import api from '../../services/api';
-
 import * as S from './styles';
 import Loading from '../../components/Loading';
 
-interface FilmeInterface {
-  id: number;
-  poster_path: string;
-  original_title: string;
-  release_date: string;
-  vote_average: number;
-  overview: string;
-}
-
 const Home = () => {
-  const [stateHome, setStateHome] = useState<FilmeInterface[]>([]);
+  const { filmsData, handleShowRecentMovies } = useContext(FilmsContext);
 
   useEffect(() => {
-    const showRecentMovies = async () => {
-      try {
-        const { data } = await api.get(
-          `movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&query&language=en-US&`,
-        );
-        setStateHome(data.results);
-      } catch {
-        toast.error(
-          'Não conseguimos obter a lista de filmes mais recentes! Tente novamente mais tarde.',
-        );
-      }
-    };
-    showRecentMovies();
+    handleShowRecentMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <S.Container>
       <S.HeaderHome>
         <Header />
-        <SearchInput setStateHome={setStateHome} />
+        <SearchInput />
         <Button url="/favorites">
           Favoritos <FaHeart size="0.9rem" style={{ marginLeft: '5px' }} />
         </Button>
@@ -54,8 +33,8 @@ const Home = () => {
       <Title title="Seja bem vindo" />
 
       <S.CardContainer>
-        {stateHome.length > 0 ? (
-          stateHome.map((filme) => (
+        {filmsData.length > 0 ? (
+          filmsData.map((filme) => (
             <Card
               key={filme.id}
               id={filme.id}

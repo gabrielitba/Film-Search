@@ -1,36 +1,21 @@
-import {
-  Dispatch,
-  SetStateAction,
-  useState,
-  useCallback,
-  useRef,
-  useEffect,
-} from 'react';
-import { toast } from 'react-toastify';
+import { useState, useCallback, useRef, useEffect, useContext } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { TiArrowBack } from 'react-icons/ti';
 
+import { FilmsContext } from '../../context/films';
+
 import * as S from './styles';
 
-import api from '../../services/api';
+const SearchInput = () => {
+  const { handleSearchFilms } = useContext(FilmsContext);
 
-interface SearchInterface {
-  id: number;
-  poster_path: string;
-  original_title: string;
-  release_date: string;
-  vote_average: number;
-  overview: string;
-}
-
-interface SearchInputProps {
-  setStateHome: Dispatch<SetStateAction<SearchInterface[]>>;
-}
-
-const SearchInput = ({ setStateHome }: SearchInputProps) => {
   const [showInputSearch, setShowInputSearch] = useState(false);
 
   const inputSearch = useRef<HTMLInputElement | null>(null);
+
+  const dispatchCallback = () => {
+    handleSearchFilms(inputSearch.current?.value ?? '');
+  };
 
   const handleShowInput = useCallback(() => {
     if (showInputSearch === false) {
@@ -50,23 +35,6 @@ const SearchInput = ({ setStateHome }: SearchInputProps) => {
     }
   }, [showInputSearch]);
 
-  function fetchMyAPI() {
-    api
-      .get(
-        `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${inputSearch.current?.value}`,
-      )
-      .then((response) => {
-        const { data } = response;
-
-        if (data.total_results === 0) {
-          toast.error('Sem resultados! Verifique se digitou corretamente.');
-          return;
-        }
-
-        setStateHome(data.results);
-      });
-  }
-
   return (
     <>
       {showInputSearch ? (
@@ -75,7 +43,7 @@ const SearchInput = ({ setStateHome }: SearchInputProps) => {
             placeholder="Pesquise um filme"
             ref={inputSearch}
             onKeyDown={(event) => {
-              if (event.key === 'Enter') fetchMyAPI();
+              if (event.key === 'Enter') dispatchCallback();
             }}
           />
 
