@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const LoadingRoller = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 10%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 
   @keyframes lds-roller {
     0% {

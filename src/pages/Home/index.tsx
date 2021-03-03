@@ -11,6 +11,7 @@ import Title from '../../components/Title';
 import api from '../../services/api';
 
 import * as S from './styles';
+import Loading from '../../components/Loading';
 
 interface FilmeInterface {
   id: number;
@@ -23,8 +24,6 @@ interface FilmeInterface {
 
 const Home = () => {
   const [stateHome, setStateHome] = useState<FilmeInterface[]>([]);
-
-  console.log(process.env.REACT_APP_API_KEY);
 
   useEffect(() => {
     const showRecentMovies = async () => {
@@ -55,17 +54,21 @@ const Home = () => {
       <Title title="Seja bem vindo" />
 
       <S.CardContainer>
-        {stateHome.map((filme) => (
-          <Card
-            key={filme.id}
-            id={filme.id}
-            poster_path={filme.poster_path}
-            original_title={filme.original_title}
-            release_date={filme.release_date}
-            vote_average={filme.vote_average}
-            overview={filme.overview}
-          />
-        ))}
+        {stateHome.length > 0 ? (
+          stateHome.map((filme) => (
+            <Card
+              key={filme.id}
+              id={filme.id}
+              poster_path={filme.poster_path}
+              original_title={filme.original_title}
+              release_date={filme.release_date}
+              vote_average={filme.vote_average}
+              overview={filme.overview}
+            />
+          ))
+        ) : (
+          <Loading typeLoading="roller" />
+        )}
       </S.CardContainer>
     </S.Container>
   );
