@@ -29,23 +29,26 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 - **prettier**
 - **husky**
 - **lint-staged**
+- **react-icons**
 - **react-toastify**
 - **styled-components**
 - **axios**
+- **Local Storage**
+- **Context API**
 
 &nbsp;
 
 ## ⚙️ Funcionalidades
 
-Exibe os ultimos lançamentos na pagina principal;
+Exibe os ultimos filmes lançados na pagina principal;
 
-Pesquisar filmes por titulo;
+Input para pesquisar filmes;
 
-Exibir detalhes do filme clicado;
+Exibe detalhes de um filme selecionado;
 
-Favoritar/Desfavoritar filme (os dados são armazenados no localstorage);
+Adicionar filmes a uma pagina favoritos;
 
-Checagem para verificar se o filme pesquisado existe.
+Checa de o filme buscado realmente existe.
 
 &nbsp;
 

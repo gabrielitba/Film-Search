@@ -36,9 +36,9 @@ export const FavoriteButton = styled.button`
   height: 2rem;
   width: 2rem;
   font-size: 1rem;
-  opacity: 0.9;
   &:hover {
-    opacity: 1;
+    filter: brightness(0.9);
+    transform: scale(1.3);
   }
 `;
 

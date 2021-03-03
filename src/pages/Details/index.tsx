@@ -99,7 +99,7 @@ const Details = () => {
               FavoriteFilme();
             }}
           >
-            <AiOutlineStar color="#3c99dc" size="2rem" />
+            <AiOutlineStar color="#3c99dc" size="2.5rem" />
           </S.FavoriteButton>
         ) : (
           <S.FavoriteButton
@@ -107,7 +107,7 @@ const Details = () => {
               UnfavoriteFilme();
             }}
           >
-            <AiFillStar color="#3c99dc" size="2rem" />
+            <AiFillStar color="#3c99dc" size="2.5rem" />
           </S.FavoriteButton>
         )}
 

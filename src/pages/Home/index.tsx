@@ -27,7 +27,7 @@ const Home = () => {
   console.log(process.env.REACT_APP_API_KEY);
 
   useEffect(() => {
-    async function loadFilms() {
+    const showRecentMovies = async () => {
       try {
         const { data } = await api.get(
           `movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&query&language=en-US&`,
@@ -38,8 +38,8 @@ const Home = () => {
           'Não conseguimos obter a lista de filmes mais recentes! Tente novamente mais tarde.',
         );
       }
-    }
-    loadFilms();
+    };
+    showRecentMovies();
   }, []);
 
   return (
