@@ -54,7 +54,8 @@ const Details = () => {
 
   useEffect(() => {
     checkFavorited();
-  }, [checkFavorited]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const FavoriteFilme = useCallback(() => {
     setListFavorites([...listFavorites, filmSelected]);
@@ -64,19 +65,20 @@ const Details = () => {
       JSON.stringify([...listFavorites, filmSelected]),
     );
 
-    setButtonFavorite(true);
+    setButtonFavorite(false);
   }, [filmSelected, listFavorites]);
 
   const UnfavoriteFilme = useCallback(() => {
     setListFavorites(
-      listFavorites.filter((film) => {
-        return film !== filmSelected;
+      listFavorites.filter((item) => {
+        return item !== filmSelected;
       }),
     );
     localStorage.setItem(
       '@FilmStalker:Favorites',
       JSON.stringify(listFavorites),
     );
+
     setButtonFavorite(true);
   }, [filmSelected, listFavorites]);
 

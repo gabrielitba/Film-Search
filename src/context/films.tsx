@@ -48,8 +48,6 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
     }
   };
 
-  console.log(filmsData);
-
   const handleSearchFilms = useCallback((filmeName: string) => {
     api
       .get(
