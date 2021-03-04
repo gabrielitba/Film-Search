@@ -14,7 +14,7 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 
 ## 🎥 Prévia do Projeto
 
-![alt text](https://i.imgur.com/2Rz5h5p.gif)
+![alt text](https://i.imgur.com/m6oX0Ub.gif)
 
 [Ou acesse agora](https://cinfilositba.netlify.app/)
 
