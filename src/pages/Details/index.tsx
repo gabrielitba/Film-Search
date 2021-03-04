@@ -57,16 +57,6 @@ const Details = () => {
   }, [checkFavorited]);
 
   const FavoriteFilme = useCallback(() => {
-    filmSelected.poster_path.includes(
-      'https://image.tmdb.org/t/p/w500https://image.tmdb.org/t/p/w500',
-    )
-      ? (filmSelected.poster_path = filmSelected.poster_path.replace(
-          'https://image.tmdb.org/t/p/w500/',
-          '/',
-        ))
-      : // eslint-disable-next-line no-self-assign
-        (filmSelected.poster_path = filmSelected.poster_path);
-
     setListFavorites([...listFavorites, filmSelected]);
 
     localStorage.setItem(
@@ -78,13 +68,15 @@ const Details = () => {
   }, [filmSelected, listFavorites]);
 
   const UnfavoriteFilme = useCallback(() => {
-    listFavorites.filter((film) => {
-      return film !== filmSelected;
-    }),
-      localStorage.setItem(
-        '@FilmStalker:Favorites',
-        JSON.stringify(listFavorites),
-      );
+    setListFavorites(
+      listFavorites.filter((film) => {
+        return film !== filmSelected;
+      }),
+    );
+    localStorage.setItem(
+      '@FilmStalker:Favorites',
+      JSON.stringify(listFavorites),
+    );
     setButtonFavorite(true);
   }, [filmSelected, listFavorites]);
 
@@ -124,19 +116,7 @@ const Details = () => {
           {filmSelected.poster_path === null ? (
             <S.ImgUrl src={Logo} alt="imagem do filme" />
           ) : (
-            <S.ImgUrl
-              src={
-                filmSelected.poster_path.includes(
-                  'https://image.tmdb.org/t/p/w500https://image.tmdb.org/t/p/w500',
-                )
-                  ? filmSelected.poster_path.replace(
-                      'https://image.tmdb.org/t/p/w500/',
-                      '/',
-                    )
-                  : filmSelected.poster_path
-              }
-              alt="imagem do filme"
-            />
+            <S.ImgUrl src={filmSelected.poster_path} alt="imagem do filme" />
           )}
 
           <S.ContainerInfos>

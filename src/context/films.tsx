@@ -29,13 +29,26 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
       const { data } = await api.get(
         `movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&query&language=en-US&`,
       );
-      setFilmsData(data.results);
+      setFilmsData(
+        data.results.map((film: FilmsData) => {
+          return {
+            id: film.id,
+            poster_path: `https://image.tmdb.org/t/p/w500${film.poster_path}`,
+            original_title: film.original_title,
+            release_date: film.release_date,
+            vote_average: film.vote_average,
+            overview: film.overview,
+          };
+        }),
+      );
     } catch {
       toast.error(
         'Não conseguimos obter a lista de filmes mais recentes! Tente novamente mais tarde.',
       );
     }
   };
+
+  console.log(filmsData);
 
   const handleSearchFilms = useCallback((filmeName: string) => {
     api
@@ -50,13 +63,23 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
           return;
         }
 
-        setFilmsData(data.results);
+        setFilmsData(
+          data.results.map((film: FilmsData) => {
+            return {
+              id: film.id,
+              poster_path: `https://image.tmdb.org/t/p/w500${film.poster_path}`,
+              original_title: film.original_title,
+              release_date: film.release_date,
+              vote_average: film.vote_average,
+              overview: film.overview,
+            };
+          }),
+        );
       });
   }, []);
 
   const handleGetFilmSelected = useCallback((filmClicked: FilmsData) => {
-    (filmClicked.poster_path = `https://image.tmdb.org/t/p/w500${filmClicked.poster_path}`),
-      setFilmSelected(filmClicked);
+    setFilmSelected(filmClicked);
   }, []);
 
   return (

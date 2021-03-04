@@ -44,10 +44,7 @@ const Favorites = () => {
         {listFavorites.map((film: FilmeInterface) => (
           <Card
             key={film.id}
-            poster_path={film.poster_path.replace(
-              'https://image.tmdb.org/t/p/w500/',
-              '/',
-            )}
+            poster_path={film.poster_path}
             filmSelected={film}
           />
         ))}

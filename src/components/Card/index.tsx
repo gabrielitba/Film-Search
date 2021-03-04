@@ -27,10 +27,7 @@ const Card = ({ poster_path, filmSelected }: CardProps) => {
       {poster_path === null ? (
         <img src={Logo} alt="imagem do filme" />
       ) : (
-        <img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt="imagem do filme"
-        />
+        <img src={poster_path} alt="imagem do filme" />
       )}
       <button
         type="button"
