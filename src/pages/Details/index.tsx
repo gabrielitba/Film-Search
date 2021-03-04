@@ -31,53 +31,62 @@ const Details = () => {
     history.goBack();
   }, [history]);
 
-  const [listFavorites, setListFavorites] = useState<Array<FilmeInterface>>([]);
   const [buttonFavorite, setButtonFavorite] = useState<boolean>(true);
 
-  const filme: FilmeInterface = JSON.parse(
-    localStorage.getItem('details') || '{}',
+  const [listFavorites, setListFavorites] = useState<Array<FilmeInterface>>(
+    () => {
+      const films = localStorage.getItem('@FilmStalker:Favorites');
+      if (films) {
+        return JSON.parse(films);
+      } else {
+        return [];
+      }
+    },
   );
 
   const checkFavorited = useCallback(() => {
     listFavorites.map((favorite) => {
-      if (favorite.id === filme.id) {
+      if (favorite.id === filmSelected.id) {
         setButtonFavorite(false);
       }
     });
-  }, [listFavorites, filme.id]);
-
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(listFavorites));
-  }, [listFavorites]);
+  }, [listFavorites, filmSelected.id]);
 
   useEffect(() => {
     checkFavorited();
   }, [checkFavorited]);
 
   const FavoriteFilme = useCallback(() => {
-    setButtonFavorite(false);
+    filmSelected.poster_path.includes(
+      'https://image.tmdb.org/t/p/w500https://image.tmdb.org/t/p/w500',
+    )
+      ? (filmSelected.poster_path = filmSelected.poster_path.replace(
+          'https://image.tmdb.org/t/p/w500/',
+          '/',
+        ))
+      : // eslint-disable-next-line no-self-assign
+        (filmSelected.poster_path = filmSelected.poster_path);
 
-    setListFavorites(listFavorites.concat(filme));
+    setListFavorites([...listFavorites, filmSelected]);
 
-    listFavorites.map((favorite, index) => {
-      if (favorite.id === filme.id) {
-        listFavorites.splice(index, 1);
-        setListFavorites(listFavorites.concat(filme));
-      }
-    });
-  }, [filme, listFavorites]);
+    localStorage.setItem(
+      '@FilmStalker:Favorites',
+      JSON.stringify([...listFavorites, filmSelected]),
+    );
+
+    setButtonFavorite(true);
+  }, [filmSelected, listFavorites]);
 
   const UnfavoriteFilme = useCallback(() => {
-    listFavorites.map((favorite, index) => {
-      if (favorite.id === filme.id) {
-        listFavorites.splice(index, 1);
-
-        setListFavorites(listFavorites);
-        localStorage.setItem('favorites', JSON.stringify(listFavorites));
-        setButtonFavorite(true);
-      }
-    });
-  }, [filme.id, listFavorites]);
+    listFavorites.filter((film) => {
+      return film !== filmSelected;
+    }),
+      localStorage.setItem(
+        '@FilmStalker:Favorites',
+        JSON.stringify(listFavorites),
+      );
+    setButtonFavorite(true);
+  }, [filmSelected, listFavorites]);
 
   return (
     <>
@@ -115,7 +124,19 @@ const Details = () => {
           {filmSelected.poster_path === null ? (
             <S.ImgUrl src={Logo} alt="imagem do filme" />
           ) : (
-            <S.ImgUrl src={filmSelected.poster_path} alt="imagem do filme" />
+            <S.ImgUrl
+              src={
+                filmSelected.poster_path.includes(
+                  'https://image.tmdb.org/t/p/w500https://image.tmdb.org/t/p/w500',
+                )
+                  ? filmSelected.poster_path.replace(
+                      'https://image.tmdb.org/t/p/w500/',
+                      '/',
+                    )
+                  : filmSelected.poster_path
+              }
+              alt="imagem do filme"
+            />
           )}
 
           <S.ContainerInfos>

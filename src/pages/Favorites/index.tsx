@@ -21,7 +21,9 @@ const Favorites = () => {
   const [listFavorites, setListFavorites] = useState<Array<FilmeInterface>>([]);
 
   useEffect(() => {
-    setListFavorites(JSON.parse(localStorage.getItem('favorites') || '[]'));
+    setListFavorites(
+      JSON.parse(localStorage.getItem('@FilmStalker:Favorites') || '[]'),
+    );
   }, []);
 
   return (
@@ -39,13 +41,14 @@ const Favorites = () => {
       />
 
       <S.CardContainer>
-        {listFavorites.map((filme) => (
+        {listFavorites.map((film: FilmeInterface) => (
           <Card
-            key={filme.id}
-            poster_path={filme.poster_path.replace(
+            key={film.id}
+            poster_path={film.poster_path.replace(
               'https://image.tmdb.org/t/p/w500/',
               '/',
             )}
+            filmSelected={film}
           />
         ))}
       </S.CardContainer>

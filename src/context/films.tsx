@@ -37,27 +37,22 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
     }
   };
 
-  const handleSearchFilms = useCallback(
-    (filmeName: string) => {
-      api
-        .get(
-          `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${filmeName}`,
-        )
-        .then((response) => {
-          const { data } = response;
+  const handleSearchFilms = useCallback((filmeName: string) => {
+    api
+      .get(
+        `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${filmeName}`,
+      )
+      .then((response) => {
+        const { data } = response;
 
-          if (data.total_results === 0) {
-            toast.error('Sem resultados! Verifique se digitou corretamente.');
-            return;
-          }
+        if (data.total_results === 0) {
+          toast.error('Sem resultados! Verifique se digitou corretamente.');
+          return;
+        }
 
-          setFilmsData(data.results);
-
-          console.log(filmsData);
-        });
-    },
-    [filmsData],
-  );
+        setFilmsData(data.results);
+      });
+  }, []);
 
   const handleGetFilmSelected = useCallback((filmClicked: FilmsData) => {
     (filmClicked.poster_path = `https://image.tmdb.org/t/p/w500${filmClicked.poster_path}`),
