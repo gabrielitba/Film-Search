@@ -13,7 +13,9 @@ import * as S from './styles';
 import Loading from '../../components/Loading';
 
 const Home = () => {
-  const { filmsData, handleShowRecentMovies } = useContext(FilmsContext);
+  const { filmsData, handleShowRecentMovies, subTitle } = useContext(
+    FilmsContext,
+  );
 
   useEffect(() => {
     handleShowRecentMovies();
@@ -30,7 +32,7 @@ const Home = () => {
         </Button>
       </S.HeaderHome>
 
-      <Title title="Seja bem vindo" />
+      <Title title="Seja bem vindo" subtitle={subTitle} />
 
       <S.CardContainer>
         {filmsData.length > 0 ? (

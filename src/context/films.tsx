@@ -10,6 +10,7 @@ interface FilmsContextProvider {
   handleSearchFilms: (filmeName: string) => void;
   filmSelected: FilmsData;
   handleGetFilmSelected: (filmClicked: FilmsData) => void;
+  subTitle: string;
 }
 
 import { FilmsData } from './interface';
@@ -23,6 +24,8 @@ export const FilmsContext = createContext({} as FilmsContextProvider);
 const FilmsProvider = ({ children }: FilmsProviderProps) => {
   const [filmsData, setFilmsData] = useState<FilmsData[]>([]);
   const [filmSelected, setFilmSelected] = useState<FilmsData>({} as FilmsData);
+
+  const [subTitle, setSubTitle] = useState('');
 
   const handleShowRecentMovies = async () => {
     try {
@@ -41,6 +44,8 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
           };
         }),
       );
+
+      setSubTitle('Exibindo últimos lançamentos...');
     } catch {
       toast.error(
         'Não conseguimos obter a lista de filmes mais recentes! Tente novamente mais tarde.',
@@ -73,6 +78,8 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
             };
           }),
         );
+
+        setSubTitle(`Exibindo resultados para: ${filmeName}`);
       });
   }, []);
 
@@ -88,6 +95,7 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
         handleSearchFilms,
         filmSelected,
         handleGetFilmSelected,
+        subTitle,
       }}
     >
       {children}

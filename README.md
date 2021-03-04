@@ -23,8 +23,10 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 ## 💻 Tecnologias utilizadas
 
 - **React**
-- **react-router-dom**
 - **TypeScript**
+- **Context API**
+- **Local Storage**
+- **react-router-dom**
 - **eslint**
 - **prettier**
 - **husky**
@@ -33,8 +35,6 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 - **react-toastify**
 - **styled-components**
 - **axios**
-- **Local Storage**
-- **Context API**
 
 &nbsp;
 
