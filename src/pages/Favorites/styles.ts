@@ -21,3 +21,17 @@ export const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+
+export const MessageUnfavorites = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 13% 0 0 20%;
+
+  > h1 {
+    margin-right: 10px;
+    color: #4c4b5b;
+    text-transform: uppercase;
+    line-height: 4rem;
+    font-weight: 300;
+  }
+`;

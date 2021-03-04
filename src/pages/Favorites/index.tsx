@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ImArrowLeft } from 'react-icons/im';
+import { ImArrowLeft, ImHeartBroken } from 'react-icons/im';
 
 import Card from '../../components/Card';
 import Header from '../../components/Header';
@@ -41,13 +41,20 @@ const Favorites = () => {
       />
 
       <S.CardContainer>
-        {listFavorites.map((film: FilmeInterface) => (
-          <Card
-            key={film.id}
-            poster_path={film.poster_path}
-            filmSelected={film}
-          />
-        ))}
+        {listFavorites.length > 0 ? (
+          listFavorites.map((film: FilmeInterface) => (
+            <Card
+              key={film.id}
+              poster_path={film.poster_path}
+              filmSelected={film}
+            />
+          ))
+        ) : (
+          <S.MessageUnfavorites>
+            <h1>Você não adicionou nenhum filme aos favoritos</h1>{' '}
+            <ImHeartBroken color="red" size="2rem" />
+          </S.MessageUnfavorites>
+        )}
       </S.CardContainer>
     </S.Container>
   );
