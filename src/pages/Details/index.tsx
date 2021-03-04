@@ -70,9 +70,16 @@ const Details = () => {
 
   const UnfavoriteFilme = useCallback(() => {
     setListFavorites(
-      listFavorites.filter((item) => {
-        return item !== filmSelected;
-      }),
+      listFavorites
+        .map((film, index) => {
+          if (film.id === filmSelected.id) {
+            listFavorites.splice(index, 1);
+          }
+          return film;
+        })
+        .filter((item) => {
+          return item !== filmSelected;
+        }),
     );
     localStorage.setItem(
       '@FilmStalker:Favorites',
