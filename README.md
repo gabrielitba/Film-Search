@@ -16,7 +16,7 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 
 ![alt text](https://i.imgur.com/m6oX0Ub.gif)
 
-[Ou acesse agora](https://cinfilositba.netlify.app/)
+[Ou acesse agora](https://filmstalker.netlify.app/)
 
 &nbsp;
 
