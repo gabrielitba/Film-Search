@@ -13,7 +13,7 @@ interface FilmsContextProvider {
   subTitle: string;
 }
 
-import { FilmsData } from './interface';
+import { FilmsData } from './interfaces';
 
 interface FilmsProviderProps {
   children: ReactNode;
