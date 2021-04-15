@@ -1,4 +1,4 @@
-import { useState, useCallback, ReactNode, createContext } from 'react';
+import { useState, useCallback, ReactNode, createContext, useRef } from 'react';
 import { useToast } from './toast';
 
 import api from '../services/api';
@@ -23,12 +23,15 @@ export const FilmsContext = createContext({} as FilmsContextProvider);
 const FilmsProvider = ({ children }: FilmsProviderProps) => {
   const { addToast } = useToast();
 
+  const hasRendered = useRef(0);
+
   const [filmsData, setFilmsData] = useState<FilmsData[]>([]);
   const [filmSelected, setFilmSelected] = useState<FilmsData>({} as FilmsData);
 
   const [subTitle, setSubTitle] = useState('');
 
-  const handleShowRecentMovies = async () => {
+  const handleShowRecentMovies = useCallback(async () => {
+    if (hasRendered.current === 1) return;
     try {
       const { data } = await api.get(
         `movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&query&language=en-US&`,
@@ -47,16 +50,17 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
       );
 
       setSubTitle('Exibindo últimos lançamentos...');
+
+      hasRendered.current = 1;
     } catch {
       addToast({
         type: 'error',
-        title: 'Título inválido',
-        description:
-          'Não conseguimos obter a lista de filmes mais recentes! Tente novamente mais tarde.',
+        title: 'Algo deu errado...',
+        description: 'Tente novamente mais tarde.',
         secondsDuration: 5,
       });
     }
-  };
+  }, [addToast]);
 
   const handleSearchFilms = useCallback(
     (filmeName: string) => {
@@ -70,10 +74,12 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
           if (data.total_results === 0) {
             addToast({
               type: 'error',
-              title: 'Título inválido',
-              description: 'Sem resultados! Verifique se digitou corretamente',
+              title: 'Sem resultados!',
+              description: ' Verifique se digitou corretamente...',
               secondsDuration: 5,
             });
+
+            return;
           }
 
           setFilmsData(
