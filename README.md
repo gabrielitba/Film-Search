@@ -14,7 +14,7 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 
 ## 🎥 Prévia do Projeto
 
-![alt text](https://i.imgur.com/m6oX0Ub.gif)
+![alt text](https://i.imgur.com/VSli0F0.gif)
 
 [Ou acesse agora](https://filmstalker.netlify.app/)
 
