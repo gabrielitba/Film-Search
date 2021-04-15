@@ -1,6 +1,5 @@
 import { useState, useCallback, ReactNode, createContext } from 'react';
-
-import { toast } from 'react-toastify';
+import { useToast } from './toast';
 
 import api from '../services/api';
 
@@ -22,6 +21,8 @@ interface FilmsProviderProps {
 export const FilmsContext = createContext({} as FilmsContextProvider);
 
 const FilmsProvider = ({ children }: FilmsProviderProps) => {
+  const { addToast } = useToast();
+
   const [filmsData, setFilmsData] = useState<FilmsData[]>([]);
   const [filmSelected, setFilmSelected] = useState<FilmsData>({} as FilmsData);
 
@@ -47,41 +48,52 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
 
       setSubTitle('Exibindo últimos lançamentos...');
     } catch {
-      toast.error(
-        'Não conseguimos obter a lista de filmes mais recentes! Tente novamente mais tarde.',
-      );
+      addToast({
+        type: 'error',
+        title: 'Título inválido',
+        description:
+          'Não conseguimos obter a lista de filmes mais recentes! Tente novamente mais tarde.',
+        secondsDuration: 5,
+      });
     }
   };
 
-  const handleSearchFilms = useCallback((filmeName: string) => {
-    api
-      .get(
-        `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${filmeName}`,
-      )
-      .then((response) => {
-        const { data } = response;
+  const handleSearchFilms = useCallback(
+    (filmeName: string) => {
+      api
+        .get(
+          `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${filmeName}`,
+        )
+        .then((response) => {
+          const { data } = response;
 
-        if (data.total_results === 0) {
-          toast.error('Sem resultados! Verifique se digitou corretamente.');
-          return;
-        }
+          if (data.total_results === 0) {
+            addToast({
+              type: 'error',
+              title: 'Título inválido',
+              description: 'Sem resultados! Verifique se digitou corretamente',
+              secondsDuration: 5,
+            });
+          }
 
-        setFilmsData(
-          data.results.map((film: FilmsData) => {
-            return {
-              id: film.id,
-              poster_path: `https://image.tmdb.org/t/p/w500${film.poster_path}`,
-              original_title: film.original_title,
-              release_date: film.release_date,
-              vote_average: film.vote_average,
-              overview: film.overview,
-            };
-          }),
-        );
+          setFilmsData(
+            data.results.map((film: FilmsData) => {
+              return {
+                id: film.id,
+                poster_path: `https://image.tmdb.org/t/p/w500${film.poster_path}`,
+                original_title: film.original_title,
+                release_date: film.release_date,
+                vote_average: film.vote_average,
+                overview: film.overview,
+              };
+            }),
+          );
 
-        setSubTitle(`Exibindo resultados para: ${filmeName}`);
-      });
-  }, []);
+          setSubTitle(`Exibindo resultados para: ${filmeName}`);
+        });
+    },
+    [addToast],
+  );
 
   const handleGetFilmSelected = useCallback((filmClicked: FilmsData) => {
     setFilmSelected(filmClicked);

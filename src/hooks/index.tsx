@@ -7,9 +7,9 @@ interface AppProviderProps {
 }
 
 const AppProvider = ({ children }: AppProviderProps) => (
-  <FilmsProvider>
-    <ToastProvider>{children}</ToastProvider>
-  </FilmsProvider>
+  <ToastProvider>
+    <FilmsProvider>{children}</FilmsProvider>
+  </ToastProvider>
 );
 
 export default AppProvider;

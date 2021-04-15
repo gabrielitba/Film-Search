@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { FaHeart } from 'react-icons/fa';
 
-import { FilmsContext } from '../../context/films';
+import { FilmsContext } from '../../hooks/films';
 
 import Card from '../../components/Card';
 import Header from '../../components/Header';
@@ -21,6 +21,8 @@ const Home = () => {
     handleShowRecentMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  console.log(filmsData);
 
   return (
     <S.Container>

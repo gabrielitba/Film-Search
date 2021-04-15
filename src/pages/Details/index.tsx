@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { ImArrowLeft } from 'react-icons/im';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
-import { FilmsContext } from '../../context/films';
+import { FilmsContext } from '../../hooks/films';
 
 import Header from '../../components/Header';
 import Button from '../../components/Button';

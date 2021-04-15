@@ -2,7 +2,7 @@ import { useState, useCallback, useRef, useEffect, useContext } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { TiArrowBack } from 'react-icons/ti';
 
-import { FilmsContext } from '../../context/films';
+import { FilmsContext } from '../../hooks/films';
 
 import * as S from './styles';
 

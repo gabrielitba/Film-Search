@@ -3,7 +3,7 @@ import * as S from './styles';
 
 import Logo from '../../assets/images/default-movie.png';
 import { useContext } from 'react';
-import { FilmsContext } from '../../context/films';
+import { FilmsContext } from '../../hooks/films';
 
 interface FilmData {
   id: number;

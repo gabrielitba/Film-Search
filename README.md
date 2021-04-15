@@ -25,14 +25,14 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 - **React**
 - **TypeScript**
 - **Context API**
+- **Custom hook de toast**
 - **Local Storage**
-- **react-router-dom**
 - **eslint**
 - **prettier**
 - **husky**
 - **lint-staged**
 - **react-icons**
-- **react-toastify**
+- **react-spring**
 - **styled-components**
 - **axios**
 
