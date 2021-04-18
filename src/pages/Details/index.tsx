@@ -25,9 +25,27 @@ interface FilmeInterface {
 const Details = () => {
   const { filmSelected } = useContext(FilmsContext);
 
+  const [currentMovie, setCurrentMovie] = useState(filmSelected);
+
+  useEffect(() => {
+    if (Object.keys(filmSelected).length === 6) {
+      localStorage.setItem(
+        '@FilmStalker:CurrentMovie',
+        JSON.stringify(filmSelected),
+      );
+    }
+
+    if (Object.keys(filmSelected).length === 0) {
+      setCurrentMovie(
+        JSON.parse(localStorage.getItem('@FilmStalker:CurrentMovie') || '[]'),
+      );
+    }
+  }, [filmSelected]);
+
   const history = useHistory();
 
   const goToPreviousPath = useCallback(() => {
+    localStorage.removeItem('@FilmStalker:CurrentMovie');
     history.goBack();
   }, [history]);
 
@@ -122,17 +140,17 @@ const Details = () => {
         )}
 
         <S.ContainerDetails>
-          {filmSelected.poster_path === null ? (
+          {currentMovie.poster_path === null ? (
             <S.ImgUrl src={Logo} alt="imagem do filme" />
           ) : (
-            <S.ImgUrl src={filmSelected.poster_path} alt="imagem do filme" />
+            <S.ImgUrl src={currentMovie.poster_path} alt="imagem do filme" />
           )}
 
           <S.ContainerInfos>
-            <p>{filmSelected.original_title}</p>
-            <p>{filmSelected.release_date}</p>
-            <p>{filmSelected.vote_average}/10</p>
-            <S.Plot>{filmSelected.overview}</S.Plot>
+            <p>{currentMovie.original_title}</p>
+            <p>{currentMovie.release_date}</p>
+            <p>{currentMovie.vote_average}/10</p>
+            <S.Plot>{currentMovie.overview}</S.Plot>
           </S.ContainerInfos>
         </S.ContainerDetails>
       </S.CardDetail>
