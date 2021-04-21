@@ -1,9 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ImArrowLeft } from 'react-icons/im';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-
-import { useFilms } from '../../hooks/films';
 
 import Header from '../../components/Header';
 import Button from '../../components/Button';
@@ -23,29 +21,15 @@ interface FilmeInterface {
 }
 
 const Details = () => {
-  const { filmSelected } = useFilms();
-
-  const [currentMovie, setCurrentMovie] = useState(filmSelected);
-
-  useEffect(() => {
-    if (Object.keys(filmSelected).length === 6) {
-      localStorage.setItem(
-        '@FilmStalker:CurrentMovie',
-        JSON.stringify(filmSelected),
-      );
-    }
-
-    if (Object.keys(filmSelected).length === 0) {
-      setCurrentMovie(
-        JSON.parse(localStorage.getItem('@FilmStalker:CurrentMovie') || '[]'),
-      );
-    }
-  }, [filmSelected]);
+  const currentMovie = useRef<FilmeInterface>(
+    JSON.parse(sessionStorage.getItem('@FilmStalker:CurrentMovie') || '{}') ??
+      {},
+  );
 
   const history = useHistory();
 
   const goToPreviousPath = useCallback(() => {
-    localStorage.removeItem('@FilmStalker:CurrentMovie');
+    sessionStorage.removeItem('@FilmStalker:CurrentMovie');
     history.goBack();
   }, [history]);
 
@@ -64,11 +48,11 @@ const Details = () => {
 
   const checkFavorited = useCallback(() => {
     listFavorites.map((favorite) => {
-      if (favorite.id === filmSelected.id) {
+      if (favorite.id === currentMovie.current.id) {
         setButtonFavorite(false);
       }
     });
-  }, [listFavorites, filmSelected.id]);
+  }, [listFavorites, currentMovie]);
 
   useEffect(() => {
     checkFavorited();
@@ -76,27 +60,27 @@ const Details = () => {
   }, []);
 
   const FavoriteFilme = useCallback(() => {
-    setListFavorites([...listFavorites, filmSelected]);
+    setListFavorites([...listFavorites, currentMovie.current]);
 
     localStorage.setItem(
       '@FilmStalker:Favorites',
-      JSON.stringify([...listFavorites, filmSelected]),
+      JSON.stringify([...listFavorites, currentMovie.current]),
     );
 
     setButtonFavorite(false);
-  }, [filmSelected, listFavorites]);
+  }, [currentMovie, listFavorites]);
 
   const UnfavoriteFilme = useCallback(() => {
     setListFavorites(
       listFavorites
         .map((film, index) => {
-          if (film.id === filmSelected.id) {
+          if (film.id === currentMovie.current.id) {
             listFavorites.splice(index, 1);
           }
           return film;
         })
         .filter((item) => {
-          return item !== filmSelected;
+          return item !== currentMovie.current;
         }),
     );
     localStorage.setItem(
@@ -105,7 +89,7 @@ const Details = () => {
     );
 
     setButtonFavorite(true);
-  }, [filmSelected, listFavorites]);
+  }, [currentMovie, listFavorites]);
 
   return (
     <>
@@ -140,17 +124,20 @@ const Details = () => {
         )}
 
         <S.ContainerDetails>
-          {currentMovie.poster_path === null ? (
+          {currentMovie.current.poster_path === null ? (
             <S.ImgUrl src={Logo} alt="imagem do filme" />
           ) : (
-            <S.ImgUrl src={currentMovie.poster_path} alt="imagem do filme" />
+            <S.ImgUrl
+              src={currentMovie.current.poster_path}
+              alt="imagem do filme"
+            />
           )}
 
           <S.ContainerInfos>
-            <p>{currentMovie.original_title}</p>
-            <p>{currentMovie.release_date}</p>
-            <p>{currentMovie.vote_average}/10</p>
-            <S.Plot>{currentMovie.overview}</S.Plot>
+            <p>{currentMovie.current.original_title}</p>
+            <p>{currentMovie.current.release_date}</p>
+            <p>{currentMovie.current.vote_average}/10</p>
+            <S.Plot>{currentMovie.current.overview}</S.Plot>
           </S.ContainerInfos>
         </S.ContainerDetails>
       </S.CardDetail>

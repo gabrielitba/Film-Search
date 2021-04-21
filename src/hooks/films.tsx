@@ -22,7 +22,6 @@ interface IFilmsContext {
   filmsData: FilmsData[];
   handleShowRecentMovies: () => Promise<void>;
   handleSearchFilms: (filmeName: string) => void;
-  filmSelected: FilmsData;
   handleGetFilmSelected: (filmClicked: FilmsData) => void;
   subTitle: string;
 }
@@ -39,7 +38,6 @@ const FilmsProvider = ({ children }: IFilmsProvider) => {
   const hasRendered = useRef(0);
 
   const [filmsData, setFilmsData] = useState<FilmsData[]>([]);
-  const [filmSelected, setFilmSelected] = useState<FilmsData>({} as FilmsData);
 
   const [subTitle, setSubTitle] = useState('');
 
@@ -115,7 +113,10 @@ const FilmsProvider = ({ children }: IFilmsProvider) => {
   );
 
   const handleGetFilmSelected = useCallback((filmClicked: FilmsData) => {
-    setFilmSelected(filmClicked);
+    sessionStorage.setItem(
+      '@FilmStalker:CurrentMovie',
+      JSON.stringify(filmClicked) ?? '{}',
+    );
   }, []);
 
   return (
@@ -124,7 +125,6 @@ const FilmsProvider = ({ children }: IFilmsProvider) => {
         filmsData,
         handleShowRecentMovies,
         handleSearchFilms,
-        filmSelected,
         handleGetFilmSelected,
         subTitle,
       }}
