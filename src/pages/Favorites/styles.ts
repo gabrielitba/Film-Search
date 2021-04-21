@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const HeaderFavorite = styled.div`
-  height: 10vh;
+  height: 68px;
   width: 100vw;
 
   display: flex;

@@ -5,6 +5,7 @@ export const HeaderDetails = styled.div`
   display: flex;
   align-items: center;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+  height: 68px;
 `;
 
 export const ContainerTitle = styled.div`
