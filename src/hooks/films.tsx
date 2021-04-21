@@ -1,9 +1,24 @@
-import { useState, useCallback, ReactNode, createContext, useRef } from 'react';
+import {
+  useState,
+  useCallback,
+  createContext,
+  useContext,
+  useRef,
+} from 'react';
 import { useToast } from './toast';
 
 import api from '../services/api';
 
-interface FilmsContextProvider {
+interface FilmsData {
+  id: number;
+  poster_path: string;
+  original_title: string;
+  release_date: string;
+  vote_average: number;
+  overview: string;
+}
+
+interface IFilmsContext {
   filmsData: FilmsData[];
   handleShowRecentMovies: () => Promise<void>;
   handleSearchFilms: (filmeName: string) => void;
@@ -12,15 +27,13 @@ interface FilmsContextProvider {
   subTitle: string;
 }
 
-import { FilmsData } from './interfaces';
-
-interface FilmsProviderProps {
-  children: ReactNode;
+interface IFilmsProvider {
+  children: React.ReactNode;
 }
 
-export const FilmsContext = createContext({} as FilmsContextProvider);
+export const FilmsContext = createContext({} as IFilmsContext);
 
-const FilmsProvider = ({ children }: FilmsProviderProps) => {
+const FilmsProvider = ({ children }: IFilmsProvider) => {
   const { addToast } = useToast();
 
   const hasRendered = useRef(0);
@@ -121,4 +134,14 @@ const FilmsProvider = ({ children }: FilmsProviderProps) => {
   );
 };
 
-export default FilmsProvider;
+const useFilms = (): IFilmsContext => {
+  const context = useContext(FilmsContext);
+
+  if (!context) {
+    throw new Error('useTodos depende do TodosProvider');
+  }
+
+  return context;
+};
+
+export { FilmsProvider, useFilms };

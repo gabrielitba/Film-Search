@@ -1,7 +1,7 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { FaHeart } from 'react-icons/fa';
 
-import { FilmsContext } from '../../hooks/films';
+import { useFilms } from '../../hooks/films';
 
 import Card from '../../components/Card';
 import Header from '../../components/Header';
@@ -13,9 +13,7 @@ import * as S from './styles';
 import Loading from '../../components/Loading';
 
 const Home = () => {
-  const { filmsData, handleShowRecentMovies, subTitle } = useContext(
-    FilmsContext,
-  );
+  const { filmsData, handleShowRecentMovies, subTitle } = useFilms();
 
   useEffect(() => {
     handleShowRecentMovies();

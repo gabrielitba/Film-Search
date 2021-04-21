@@ -4,10 +4,10 @@ import * as S from './styles';
 
 import Toast from './components/Toast';
 
-import { ToastMessage } from '../../hooks/interfaces';
+import { IToastMessage } from '../../hooks/toast';
 
 interface ToastContainerProps {
-  messages: ToastMessage[];
+  messages: IToastMessage[];
 }
 const ToastContainer = ({ messages }: ToastContainerProps) => {
   const toastTransition = useTransition(messages, (message) => message.id, {

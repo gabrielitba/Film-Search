@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState, useContext } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ImArrowLeft } from 'react-icons/im';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
-import { FilmsContext } from '../../hooks/films';
+import { useFilms } from '../../hooks/films';
 
 import Header from '../../components/Header';
 import Button from '../../components/Button';
@@ -23,7 +23,7 @@ interface FilmeInterface {
 }
 
 const Details = () => {
-  const { filmSelected } = useContext(FilmsContext);
+  const { filmSelected } = useFilms();
 
   const [currentMovie, setCurrentMovie] = useState(filmSelected);
 

@@ -45,6 +45,8 @@ export const Wrapper = styled(animated.div)<ToastProps>`
     }
   }
   button {
+    cursor: pointer;
+
     position: absolute;
     right: 16px;
     top: 19px;
