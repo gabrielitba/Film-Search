@@ -27,8 +27,6 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 - **Context API**
 - **Custom hook de toast**
 - **Local Storage**
-- **eslint**
-- **prettier**
 - **husky**
 - **lint-staged**
 - **react-icons**
