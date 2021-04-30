@@ -25,7 +25,7 @@ API Reference: https://developers.themoviedb.org/3/getting-started/introduction
 - **React**
 - **TypeScript**
 - **Context API**
-- **Custom hook de toast**
+- **Custom hook**
 - **Local Storage**
 - **husky**
 - **lint-staged**
