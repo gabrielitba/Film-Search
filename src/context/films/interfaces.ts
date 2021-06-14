@@ -1,4 +1,4 @@
-export interface FilmsData {
+export interface FilmData {
   id: number;
   poster_path: string;
   original_title: string;
@@ -8,10 +8,10 @@ export interface FilmsData {
 }
 
 export interface IFilmsContext {
-  filmsData: FilmsData[];
+  filmsData: FilmData[];
   handleShowRecentMovies: () => Promise<void>;
   handleSearchFilms: (filmeName: string) => void;
-  handleGetFilmSelected: (filmClicked: FilmsData) => void;
+  handleGetFilmSelected: (filmClicked: FilmData) => void;
   subTitle: string;
 }
 

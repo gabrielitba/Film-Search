@@ -1,13 +1,13 @@
-import { useState, useCallback, useRef, useEffect, useContext } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { TiArrowBack } from 'react-icons/ti';
 
-import { FilmsContext } from '../../hooks/films';
+import useFilms from '../../hooks/films';
 
 import * as S from './styles';
 
 const SearchInput = () => {
-  const { handleSearchFilms } = useContext(FilmsContext);
+  const { handleSearchFilms } = useFilms();
 
   const [showInputSearch, setShowInputSearch] = useState(false);
 

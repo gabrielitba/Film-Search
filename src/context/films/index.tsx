@@ -2,7 +2,7 @@ import { useState, useCallback, createContext, useRef } from 'react';
 import { useToast } from '../../hooks/toast';
 
 import api from '../../services/api';
-import { FilmsData, IFilmsContext, IFilmsProvider } from './interfaces';
+import { FilmData, IFilmsContext, IFilmsProvider } from './interfaces';
 
 const FilmsContext = createContext({} as IFilmsContext);
 
@@ -11,7 +11,7 @@ const FilmsProvider = ({ children }: IFilmsProvider) => {
 
   const hasRendered = useRef(0);
 
-  const [filmsData, setFilmsData] = useState<FilmsData[]>([]);
+  const [filmsData, setFilmsData] = useState<FilmData[]>([]);
 
   const [subTitle, setSubTitle] = useState('');
 
@@ -22,7 +22,7 @@ const FilmsProvider = ({ children }: IFilmsProvider) => {
         `movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&query&language=en-US&`,
       );
       setFilmsData(
-        data.results.map((film: FilmsData) => {
+        data.results.map((film: FilmData) => {
           return {
             id: film.id,
             poster_path: `https://image.tmdb.org/t/p/w500${film.poster_path}`,
@@ -68,7 +68,7 @@ const FilmsProvider = ({ children }: IFilmsProvider) => {
           }
 
           setFilmsData(
-            data.results.map((film: FilmsData) => {
+            data.results.map((film: FilmData) => {
               return {
                 id: film.id,
                 poster_path: `https://image.tmdb.org/t/p/w500${film.poster_path}`,
@@ -86,7 +86,7 @@ const FilmsProvider = ({ children }: IFilmsProvider) => {
     [addToast],
   );
 
-  const handleGetFilmSelected = useCallback((filmClicked: FilmsData) => {
+  const handleGetFilmSelected = useCallback((filmClicked: FilmData) => {
     sessionStorage.setItem(
       '@FilmStalker:CurrentMovie',
       JSON.stringify(filmClicked) ?? '{}',

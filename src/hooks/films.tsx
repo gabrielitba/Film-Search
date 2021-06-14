@@ -12,4 +12,4 @@ const useFilms = (): IFilmsContext => {
   return context;
 };
 
-export { useFilms };
+export default useFilms;

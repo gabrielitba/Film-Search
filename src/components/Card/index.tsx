@@ -2,17 +2,9 @@ import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 import Logo from '../../assets/images/default-movie.png';
-import { useContext } from 'react';
-import { FilmsContext } from '../../hooks/films';
 
-interface FilmData {
-  id: number;
-  poster_path: string;
-  original_title: string;
-  release_date: string;
-  vote_average: number;
-  overview: string;
-}
+import { FilmData } from '../../context/films/interfaces';
+import useFilms from '../../hooks/films';
 
 interface CardProps {
   poster_path: string;
@@ -20,7 +12,7 @@ interface CardProps {
 }
 
 const Card = ({ poster_path, filmSelected }: CardProps) => {
-  const { handleGetFilmSelected } = useContext(FilmsContext);
+  const { handleGetFilmSelected } = useFilms();
 
   return (
     <S.Container>
