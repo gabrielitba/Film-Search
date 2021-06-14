@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { FilmsProvider } from './films';
+import { FilmsProvider } from '../context/films';
 import { ToastProvider } from './toast';
 
 interface AppProviderProps {
