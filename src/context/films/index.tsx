@@ -1,7 +1,8 @@
 import { useState, useCallback, createContext, useRef } from 'react';
-import { useToast } from '../../hooks/toast';
 
 import api from '../../services/api';
+
+import { useToast } from '../../hooks/toast';
 import { FilmData, IFilmsContext, IFilmsProvider } from './interfaces';
 
 const FilmsContext = createContext({} as IFilmsContext);

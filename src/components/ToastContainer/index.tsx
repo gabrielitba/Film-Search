@@ -4,7 +4,7 @@ import * as S from './styles';
 
 import Toast from './components/Toast';
 
-import { IToastMessage } from '../../hooks/toast';
+import { IToastMessage } from '../../hooks/toast/interfaces';
 
 interface ToastContainerProps {
   messages: IToastMessage[];

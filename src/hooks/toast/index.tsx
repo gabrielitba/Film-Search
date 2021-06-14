@@ -1,25 +1,13 @@
 import { createContext, useContext, useCallback, useState } from 'react';
 
-import ToastContainer from '../components/ToastContainer';
+import ToastContainer from '../../components/ToastContainer';
 
-import v4 from '../utils/uuidv4';
-
-interface ToastProviderProps {
-  children: React.ReactNode;
-}
-
-export interface IToastMessage {
-  id: string;
-  type?: 'success' | 'error' | 'info';
-  title: string;
-  description?: string;
-  secondsDuration: number;
-}
-
-interface ToastContextProps {
-  addToast: (message: Omit<IToastMessage, 'id'>) => void;
-  removeToast: (id: string) => void;
-}
+import v4 from '../../utils/uuidv4';
+import {
+  ToastContextProps,
+  ToastProviderProps,
+  IToastMessage,
+} from './interfaces';
 
 const ToastContext = createContext({} as ToastContextProps);
 
