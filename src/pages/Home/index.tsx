@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { FaHeart } from 'react-icons/fa';
 
-import { useFilms } from '../../hooks/films';
+import useFilms from '../../hooks/films';
 
 import Card from '../../components/Card';
 import Header from '../../components/Header';
